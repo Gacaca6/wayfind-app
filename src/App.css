@@ -1,0 +1,152 @@
+/* Wayfind App Specific Styles */
+
+/* Ensure smooth transitions throughout the app */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile-first responsive adjustments */
+@media (max-width: 380px) {
+  .safe-area {
+    @apply px-4 pt-10 pb-20;
+  }
+  
+  .app-name {
+    font-size: 28px;
+  }
+  
+  .section-header {
+    font-size: 18px;
+  }
+  
+  .verse-text {
+    font-size: 16px;
+  }
+}
+
+/* Tablet and larger screens */
+@media (min-width: 768px) {
+  .screen-container {
+    max-width: 480px;
+    margin: 0 auto;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Custom range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: #F5E6D3;
+  border-radius: 3px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #C8873A;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #C8873A;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* Custom select styling */
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%235C3D2E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 16px;
+  padding-right: 24px;
+}
+
+/* Focus states for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #C8873A;
+  outline-offset: 2px;
+}
+
+/* Prevent text selection on interactive elements */
+button,
+.nav-item,
+.emotion-tile {
+  user-select: none;
+}
+
+/* Smooth scrolling for the entire app */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Loading skeleton animation */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton {
+  animation: skeleton-pulse 2s ease-in-out infinite;
+  background: linear-gradient(90deg, #F5E6D3 25%, #FAF7F2 50%, #F5E6D3 75%);
+  background-size: 200% 100%;
+}
+
+/* Touch feedback for mobile */
+@media (hover: none) {
+  .btn-primary:active,
+  .btn-secondary:active,
+  .emotion-tile:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Dark mode adjustments */
+.dark .wayfind-card {
+  background-color: rgba(245, 230, 211, 0.1);
+}
+
+.dark .wayfind-input {
+  background-color: rgba(44, 26, 14, 0.5);
+  color: #FAF7F2;
+}
+
+/* Safe area for notched devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-area {
+    padding-top: max(3rem, env(safe-area-inset-top));
+    padding-bottom: max(6rem, env(safe-area-inset-bottom));
+  }
+}
