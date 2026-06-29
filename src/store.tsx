@@ -6,6 +6,7 @@ export interface SavedVerse {
   id: string;          // stable per reference (so the same verse de-dupes)
   reference: string;
   text: string;
+  kinyarwanda?: string;
   translation: string;
   reflection?: string;
   emotion?: string;
@@ -37,6 +38,8 @@ interface Store {
   setDarkMode: (v: boolean) => void;
   fontSize: number;
   setFontSize: (n: number) => void;
+  showKinyarwanda: boolean;
+  setShowKinyarwanda: (v: boolean) => void;
 }
 
 const StoreContext = createContext<Store | null>(null);
@@ -48,6 +51,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [translation, setTranslation] = useLocalStorage<Translation>('wf.translation', 'KJV');
   const [darkMode, setDarkMode] = useLocalStorage<boolean>('wf.darkMode', false);
   const [fontSize, setFontSize] = useLocalStorage<number>('wf.fontSize', 19);
+  const [showKinyarwanda, setShowKinyarwanda] = useLocalStorage<boolean>('wf.showKinyarwanda', true);
 
   // Apply theme + reading size to the document.
   useEffect(() => {
@@ -81,7 +85,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setDarkMode,
     fontSize,
     setFontSize,
-  }), [profile, saved, recents, translation, darkMode, fontSize, setProfile, setSaved, setRecents, setTranslation, setDarkMode, setFontSize]);
+    showKinyarwanda,
+    setShowKinyarwanda,
+  }), [profile, saved, recents, translation, darkMode, fontSize, showKinyarwanda, setProfile, setSaved, setRecents, setTranslation, setDarkMode, setFontSize, setShowKinyarwanda]);
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
 }

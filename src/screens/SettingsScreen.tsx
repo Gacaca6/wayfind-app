@@ -1,10 +1,10 @@
-import { BookOpen, Moon, Type, Info, Trash2 } from 'lucide-react';
+import { BookOpen, Moon, Type, Info, Trash2, Languages } from 'lucide-react';
 import { useStore } from '../store';
 import { useToast } from '../components/Toast';
-import type { Translation } from '../lib/bible';
+import type { EnglishTranslation } from '../lib/bible';
 
 export function SettingsScreen() {
-  const { profile, setProfile, translation, setTranslation, darkMode, setDarkMode, fontSize, setFontSize } = useStore();
+  const { profile, setProfile, translation, setTranslation, darkMode, setDarkMode, fontSize, setFontSize, showKinyarwanda, setShowKinyarwanda } = useStore();
   const toast = useToast();
 
   return (
@@ -27,7 +27,7 @@ export function SettingsScreen() {
       {/* Default translation */}
       <Row icon={<BookOpen className="h-5 w-5" aria-hidden="true" />} label="Default translation">
         <div className="inline-flex rounded-full border border-[var(--ui-border)] p-1 text-sm">
-          {(['KJV', 'WEB'] as Translation[]).map((t) => (
+          {(['KJV', 'WEB'] as EnglishTranslation[]).map((t) => (
             <button
               key={t}
               onClick={() => setTranslation(t)}
@@ -40,6 +40,11 @@ export function SettingsScreen() {
             </button>
           ))}
         </div>
+      </Row>
+
+      {/* Kinyarwanda */}
+      <Row icon={<Languages className="h-5 w-5" aria-hidden="true" />} label="Show Kinyarwanda">
+        <Switch checked={showKinyarwanda} onChange={setShowKinyarwanda} label="Show Kinyarwanda alongside English" />
       </Row>
 
       {/* Dark mode */}
@@ -77,9 +82,14 @@ export function SettingsScreen() {
         </p>
         <p className="body-text text-sm leading-relaxed">
           Wayfind helps you find scripture for whatever you’re feeling, and read the whole Bible with ease.
-          Two free, public-domain translations are included: the <strong>King James Version</strong> (familiar)
-          and the <strong>World English Bible</strong> (modern and easy to read). Everything works offline.
+          English is included as the <strong>King James Version</strong> (familiar) and the
+          <strong> World English Bible</strong> (easy to read), with <strong>Kinyarwanda</strong> shown
+          alongside so you can read God’s Word in your own language. Everything works offline.
           No accounts, no ads, no cost.
+        </p>
+        <p className="caption mt-3">
+          Kinyarwanda text: Bibiliya Yera (BIR) © Bible Society of Rwanda. Used with thanks for
+          ministry purposes.
         </p>
       </div>
 
@@ -87,7 +97,7 @@ export function SettingsScreen() {
       <button
         onClick={() => {
           if (confirm('Clear saved verses and reset settings on this device?')) {
-            ['wf.profile', 'wf.saved', 'wf.recents', 'wf.translation', 'wf.darkMode', 'wf.fontSize', 'wf.reader'].forEach((k) =>
+            ['wf.profile', 'wf.saved', 'wf.recents', 'wf.translation', 'wf.darkMode', 'wf.fontSize', 'wf.reader', 'wf.showKinyarwanda'].forEach((k) =>
               localStorage.removeItem(k)
             );
             toast.show('Cleared — reloading');

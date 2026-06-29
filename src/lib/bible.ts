@@ -3,7 +3,10 @@
 // disk), so the app shell stays light and everything works offline after first load.
 import { bookIndexByName, books } from '../data/books';
 
-export type Translation = 'KJV' | 'WEB';
+// KJV/WEB are English; KIN is Kinyarwanda (BIR — Bibiliya Yera, © Bible Society
+// of Rwanda 2001), shown alongside the English rather than in the English toggle.
+export type Translation = 'KJV' | 'WEB' | 'KIN';
+export type EnglishTranslation = 'KJV' | 'WEB';
 
 interface BibleData {
   t: string;
@@ -67,6 +70,29 @@ export async function getPassage(
     if (ch[v - 1] !== undefined) parts.push(ch[v - 1]);
   }
   return parts.join(' ');
+}
+
+// Synchronous read from the in-memory cache only (returns null if not loaded yet).
+// Used for instant render of already-loaded translations (e.g. Kinyarwanda on cards).
+export function getPassageSync(
+  t: Translation,
+  bookName: string,
+  chapter: number,
+  verseStart: number,
+  verseEnd: number
+): string | null {
+  const data = cache[t];
+  if (!data) return null;
+  const bi = bookIndexByName[bookName];
+  if (bi === undefined) return null;
+  const ch = data.b[bi]?.[chapter - 1];
+  if (!ch) return null;
+  const parts: string[] = [];
+  for (let v = verseStart; v <= verseEnd; v++) {
+    if (ch[v - 1]) parts.push(ch[v - 1]);
+  }
+  const s = parts.join(' ').trim();
+  return s || null;
 }
 
 export function formatReference(bookName: string, chapter: number, vStart: number, vEnd: number): string {

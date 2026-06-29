@@ -9,8 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "data:bible": "node scripts/fetch-bible.cjs",
+    "data:kin": "node scripts/fetch-kinyarwanda.cjs",
     "data:curate": "node scripts/build-curation.cjs",
-    "data": "npm run data:bible && npm run data:curate"
+    "data": "npm run data:bible && npm run data:kin && npm run data:curate"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

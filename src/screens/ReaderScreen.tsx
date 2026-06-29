@@ -12,11 +12,12 @@ interface Loc { book: string; chapter: number; }
 
 export function ReaderScreen() {
   const nav = useNav();
-  const { translation, setTranslation, isSaved, toggleSave } = useStore();
+  const { translation, setTranslation, isSaved, toggleSave, showKinyarwanda, setShowKinyarwanda } = useStore();
   const toast = useToast();
 
   const [loc, setLoc] = useLocalStorage<Loc>('wf.reader', { book: 'John', chapter: 1 });
   const [verses, setVerses] = useState<string[]>([]);
+  const [kinVerses, setKinVerses] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<number | null>(null);
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -62,6 +63,18 @@ export function ReaderScreen() {
     };
   }, [translation, loc.book, loc.chapter]);
 
+  // Always load the Kinyarwanda chapter (cached after first fetch); the toggle
+  // controls whether it's rendered. Loading it eagerly keeps the toggle instant.
+  useEffect(() => {
+    let cancelled = false;
+    getChapter('KIN', loc.book, loc.chapter)
+      .then((v) => !cancelled && setKinVerses(v))
+      .catch(() => !cancelled && setKinVerses([]));
+    return () => {
+      cancelled = true;
+    };
+  }, [loc.book, loc.chapter]);
+
   const go = (delta: number) => {
     highlightVerse.current = null;
     let bi = bookIndexByName[loc.book];
@@ -85,6 +98,7 @@ export function ReaderScreen() {
       id: verseRef(selected),
       reference: verseRef(selected),
       text: selectedText,
+      kinyarwanda: kinVerses[selected - 1] || undefined,
       translation,
       book: loc.book,
       chapter: loc.chapter,
@@ -123,10 +137,27 @@ export function ReaderScreen() {
         </div>
       </div>
 
-      <h1 className="section-header mb-1 text-2xl">
-        {loc.book} {loc.chapter}
-      </h1>
-      <p className="caption mb-5">{translation === 'WEB' ? 'World English Bible · easier to read' : 'King James Version'}</p>
+      <div className="mb-4 flex items-center justify-between gap-2">
+        <div>
+          <h1 className="section-header text-2xl">
+            {loc.book} {loc.chapter}
+          </h1>
+          <p className="caption">{translation === 'WEB' ? 'World English Bible · easier to read' : 'King James Version'}</p>
+        </div>
+        <button
+          role="switch"
+          aria-checked={showKinyarwanda}
+          aria-label="Show Kinyarwanda"
+          onClick={() => setShowKinyarwanda(!showKinyarwanda)}
+          className={`shrink-0 rounded-full border px-3 py-1.5 font-dmsans text-sm transition-colors ${
+            showKinyarwanda
+              ? 'border-wayfind-amber bg-wayfind-amber text-white'
+              : 'border-[var(--ui-border)] text-[var(--ui-muted)]'
+          }`}
+        >
+          Ikinyarwanda
+        </button>
+      </div>
 
       {/* Chapter text */}
       {loading ? (
@@ -156,6 +187,15 @@ export function ReaderScreen() {
                 >
                   {t}
                 </span>
+                {showKinyarwanda && kinVerses[i] && (
+                  <span
+                    lang="rw"
+                    className="mt-1 block font-lora italic text-[var(--ui-muted)]"
+                    style={{ fontSize: 'calc(var(--verse-size, 19px) - 1px)', lineHeight: 1.65 }}
+                  >
+                    {kinVerses[i]}
+                  </span>
+                )}
               </p>
             );
           })}

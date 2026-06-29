@@ -22,3 +22,8 @@ Thumbs.db
 
 # Cache
 .vite/
+
+# Copyrighted Kinyarwanda Bible text — bundled locally so installed apps work
+# offline, but NOT committed to this public repo (© Bible Society of Rwanda).
+# Regenerate locally with: npm run data:kin
+public/bible/kin.json
