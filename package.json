@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "data:bible": "node scripts/fetch-bible.cjs",
+    "data:curate": "node scripts/build-curation.cjs",
+    "data": "npm run data:bible && npm run data:curate"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -46,7 +49,6 @@
     "lucide-react": "^0.562.0",
     "next-themes": "^0.4.6",
     "posthog-js": "^1.356.1",
-    "posthog-node": "^5.21.2",
     "react": "^19.2.0",
     "react-day-picker": "^9.13.0",
     "react-dom": "^19.2.0",
@@ -76,6 +78,7 @@
     "tw-animate-css": "^1.4.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "vite-plugin-pwa": "^1.3.0"
   }
 }

@@ -4,248 +4,154 @@
 
 @layer base {
   :root {
-    /* Wayfind Brand Colors */
+    /* Wayfind brand */
     --wayfind-offwhite: #FAF7F2;
     --wayfind-amber: #C8873A;
     --wayfind-brown: #5C3D2E;
     --wayfind-amber-tint: #F5E6D3;
     --wayfind-near-black: #2C1A0E;
-    --wayfind-white: #FFFFFF;
-    
-    /* shadcn/ui theme mapped to Wayfind */
-    --background: 40 33% 97%;
-    --foreground: 24 50% 11%;
-    --card: 36 43% 90%;
-    --card-foreground: 24 50% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 24 50% 11%;
-    --primary: 35 55% 50%;
-    --primary-foreground: 40 33% 97%;
-    --secondary: 36 43% 90%;
-    --secondary-foreground: 24 50% 11%;
-    --muted: 36 43% 90%;
-    --muted-foreground: 24 30% 30%;
-    --accent: 36 43% 90%;
-    --accent-foreground: 24 50% 11%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+
+    /* Theme-able surfaces (light) */
+    --ui-bg: #FAF7F2;
+    --ui-surface: #F5E6D3;
+    --ui-surface-2: #FFFFFF;
+    --ui-text: #2C1A0E;
+    --ui-muted: rgba(44, 26, 14, 0.65);
+    --ui-border: rgba(92, 61, 46, 0.14);
+    --ui-brown: #5C3D2E;
+
+    /* Reading size (driven by Settings) */
+    --verse-size: 19px;
+
+    /* shadcn token kept for the * border rule */
     --border: 36 30% 85%;
-    --input: 0 0% 100%;
     --ring: 35 55% 50%;
-    --radius: 0.75rem;
-    --sidebar-background: 40 33% 97%;
-    --sidebar-foreground: 24 50% 11%;
-    --sidebar-primary: 35 55% 50%;
-    --sidebar-primary-foreground: 40 33% 97%;
-    --sidebar-accent: 36 43% 90%;
-    --sidebar-accent-foreground: 24 50% 11%;
-    --sidebar-border: 36 30% 85%;
-    --sidebar-ring: 35 55% 50%;
   }
 
   .dark {
-    --background: 24 50% 8%;
-    --foreground: 40 33% 97%;
-    --card: 24 40% 12%;
-    --card-foreground: 40 33% 97%;
-    --popover: 24 40% 12%;
-    --popover-foreground: 40 33% 97%;
-    --primary: 35 55% 50%;
-    --primary-foreground: 40 33% 97%;
-    --secondary: 24 40% 15%;
-    --secondary-foreground: 40 33% 97%;
-    --muted: 24 40% 15%;
-    --muted-foreground: 36 20% 65%;
-    --accent: 24 40% 15%;
-    --accent-foreground: 40 33% 97%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --ui-bg: #1a1109;
+    --ui-surface: #2a1d10;
+    --ui-surface-2: #241910;
+    --ui-text: #FAF7F2;
+    --ui-muted: rgba(250, 247, 242, 0.65);
+    --ui-border: rgba(250, 247, 242, 0.14);
+    --ui-brown: #E8D9C8;
     --border: 24 30% 20%;
-    --input: 24 40% 15%;
-    --ring: 35 55% 50%;
-    --sidebar-background: 24 50% 8%;
-    --sidebar-foreground: 40 33% 97%;
-    --sidebar-primary: 35 55% 50%;
-    --sidebar-primary-foreground: 40 33% 97%;
-    --sidebar-accent: 24 40% 15%;
-    --sidebar-accent-foreground: 40 33% 97%;
-    --sidebar-border: 24 30% 20%;
-    --sidebar-ring: 35 55% 50%;
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   body {
-    @apply bg-wayfind-offwhite text-wayfind-near-black font-dmsans;
+    @apply font-dmsans;
+    background-color: var(--ui-bg);
+    color: var(--ui-text);
     font-feature-settings: "kern" 1, "liga" 1;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
-  
-  /* Typography Hierarchy */
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-dmsans font-bold text-wayfind-brown;
+    @apply font-dmsans font-bold;
+    color: var(--ui-brown);
   }
-  
-  /* Verse text uses Lora */
-  .verse-text {
-    @apply font-lora text-wayfind-near-black leading-relaxed;
-    font-size: 18px;
-  }
-  
-  .verse-reference {
-    @apply font-dmsans font-medium text-wayfind-amber text-[13px];
-  }
-  
-  /* App name display */
+
   .app-name {
-    @apply font-lora font-bold text-wayfind-brown;
-    font-size: 32px;
+    @apply font-lora font-bold;
+    color: var(--ui-brown);
+    font-size: 34px;
   }
-  
-  /* Section headers */
+
   .section-header {
-    @apply font-dmsans font-bold text-wayfind-brown;
+    @apply font-dmsans font-bold;
+    color: var(--ui-brown);
     font-size: 20px;
   }
-  
-  /* Body text */
+
+  .verse-text {
+    @apply font-lora;
+    color: var(--ui-text);
+    font-size: var(--verse-size, 19px);
+    line-height: 1.7;
+  }
+
+  .verse-reference {
+    @apply font-dmsans font-medium text-wayfind-amber;
+    font-size: 13px;
+  }
+
   .body-text {
-    @apply font-dmsans text-wayfind-near-black;
+    @apply font-dmsans;
+    color: var(--ui-text);
     font-size: 16px;
   }
-  
-  /* Captions */
+
   .caption {
-    @apply font-dmsans text-wayfind-near-black/70;
+    @apply font-dmsans;
+    color: var(--ui-muted);
     font-size: 13px;
   }
 }
 
 @layer components {
-  /* Primary Button - Amber */
   .btn-primary {
-    @apply bg-wayfind-amber text-white font-dmsans font-semibold px-6 py-4 rounded-xl 
-           transition-all duration-300 ease-in-out
-           hover:bg-wayfind-amber/90 hover:shadow-lg
-           active:scale-[0.98]
-           disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply bg-wayfind-amber text-white font-dmsans font-semibold px-6 py-4 rounded-xl
+           transition-all duration-200 hover:bg-wayfind-amber/90 hover:shadow-lg
+           active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
   }
-  
-  /* Secondary Button - Outlined */
+
   .btn-secondary {
-    @apply bg-transparent text-wayfind-brown font-dmsans font-medium px-6 py-4 rounded-xl 
-           border-2 border-wayfind-brown/20
-           transition-all duration-300 ease-in-out
-           hover:bg-wayfind-brown/5 hover:border-wayfind-brown/30
-           active:scale-[0.98];
+    @apply bg-transparent font-dmsans font-medium px-6 py-4 rounded-xl
+           border-2 transition-all duration-200 active:scale-[0.98];
+    color: var(--ui-brown);
+    border-color: var(--ui-border);
   }
-  
-  /* Text Link Button */
+  .btn-secondary:hover { background-color: rgba(92, 61, 46, 0.06); }
+
   .btn-text {
-    @apply bg-transparent text-wayfind-brown font-dmsans font-medium 
-           transition-all duration-300 ease-in-out
-           hover:text-wayfind-amber
-           active:opacity-70;
+    @apply bg-transparent font-dmsans font-medium transition-colors hover:text-wayfind-amber active:opacity-70;
+    color: var(--ui-brown);
   }
-  
-  /* Card Style */
+
   .wayfind-card {
-    @apply bg-wayfind-amber-tint rounded-2xl p-6 
-           transition-all duration-300 ease-in-out
-           hover:shadow-md;
+    @apply rounded-2xl p-5 transition-all duration-200;
+    background-color: var(--ui-surface);
   }
-  
-  /* Input Field */
+  .wayfind-card:hover { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06); }
+
   .wayfind-input {
-    @apply bg-white text-wayfind-near-black font-dmsans 
-           px-4 py-4 rounded-xl border-2 border-transparent
-           placeholder:text-wayfind-near-black/40
-           transition-all duration-300 ease-in-out
+    @apply font-dmsans px-4 py-3.5 rounded-xl border-2 transition-all duration-200
            focus:outline-none focus:border-wayfind-amber focus:ring-2 focus:ring-wayfind-amber/20;
+    background-color: var(--ui-surface-2);
+    color: var(--ui-text);
+    border-color: transparent;
   }
-  
-  /* Emotion Tile */
+  .wayfind-input::placeholder { color: var(--ui-muted); }
+
   .emotion-tile {
-    @apply bg-wayfind-amber-tint rounded-2xl p-5 
-           flex flex-col items-center justify-center gap-3
-           transition-all duration-300 ease-in-out cursor-pointer
-           hover:bg-wayfind-amber/20 hover:shadow-md
-           active:scale-[0.98];
+    @apply rounded-2xl p-5 flex flex-col items-center justify-center gap-2
+           transition-all duration-200 cursor-pointer active:scale-[0.97];
+    background-color: var(--ui-surface);
+    color: var(--ui-text);
   }
-  
-  .emotion-tile.active {
-    @apply bg-wayfind-amber text-white;
-  }
-  
-  /* Progress Indicator */
-  .progress-dot {
-    @apply w-2 h-2 rounded-full bg-wayfind-brown/20 transition-all duration-300;
-  }
-  
-  .progress-dot.active {
-    @apply bg-wayfind-amber w-6;
-  }
-  
-  /* Bottom Navigation */
-  .nav-item {
-    @apply flex flex-col items-center gap-1 p-2 
-           text-wayfind-brown/50 transition-all duration-300 ease-in-out
-           hover:text-wayfind-amber;
-  }
-  
-  .nav-item.active {
-    @apply text-wayfind-amber;
-  }
-  
-  /* Screen Container */
-  .screen-container {
-    @apply min-h-screen w-full bg-wayfind-offwhite flex flex-col;
-  }
-  
-  /* Safe area for mobile */
-  .safe-area {
-    @apply px-6 pt-12 pb-24;
-  }
-  
-  /* Fade transition for screens */
-  .screen-fade-enter {
-    animation: fade-in 0.4s ease-in-out forwards;
-  }
-  
-  .screen-fade-exit {
-    animation: fade-out 0.4s ease-in-out forwards;
-  }
+  .emotion-tile:hover { background-color: rgba(200, 135, 58, 0.18); }
 }
 
 @layer utilities {
-  /* Custom scrollbar */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .text-balance { text-wrap: balance; }
+
+  .skeleton {
+    animation: skeleton-pulse 1.6s ease-in-out infinite;
+    background: linear-gradient(90deg, var(--ui-surface) 25%, var(--ui-bg) 50%, var(--ui-surface) 75%);
+    background-size: 200% 100%;
   }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Soft pulse for loading */
-  .pulse-soft {
-    animation: pulse-soft 2s ease-in-out infinite;
-  }
-  
-  /* Flame flicker animation */
-  .flame-flicker {
-    animation: flame-flicker 2s ease-in-out infinite;
-  }
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
 }
