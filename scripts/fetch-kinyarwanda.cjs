@@ -75,13 +75,25 @@ function parse(xml) {
   return { books, totalV, totalC };
 }
 
+const OUT_FILE = path.join(OUT, 'kin.json');
+
 (async () => {
+  // Idempotent: if it's already here (local dev), don't re-download.
+  if (fs.existsSync(OUT_FILE) && fs.statSync(OUT_FILE).size > 1_000_000) {
+    console.log('Kinyarwanda kin.json already present — skipping download.');
+    return;
+  }
   process.stdout.write('Fetching Kinyarwanda (BIR) ... ');
   const xml = await get(SRC);
   console.log(`${(xml.length / 1024 / 1024).toFixed(1)} MB`);
   const { books, totalV, totalC } = parse(xml);
   const out = { t: 'KIN', b: books };
-  fs.writeFileSync(path.join(OUT, 'kin.json'), JSON.stringify(out));
-  const kb = (fs.statSync(path.join(OUT, 'kin.json')).size / 1024).toFixed(0);
+  fs.writeFileSync(OUT_FILE, JSON.stringify(out));
+  const kb = (fs.statSync(OUT_FILE).size / 1024).toFixed(0);
   console.log(`KIN: ${books.length} books, ${totalC} chapters, ${totalV} verses -> ${kb} KB`);
-})().catch((e) => { console.error(e); process.exit(1); });
+})().catch((e) => {
+  // Never fail the build over the optional Kinyarwanda text — the app still works
+  // in English-only if this can't be fetched (e.g. no network during CI build).
+  console.warn('WARN: could not fetch Kinyarwanda text (app will show English only):', e.message);
+  process.exit(0);
+});
