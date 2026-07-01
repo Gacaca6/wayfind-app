@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
 
 export type Route =
+  | 'splash'
   | 'onboarding'
   | 'home'
   | 'feel'

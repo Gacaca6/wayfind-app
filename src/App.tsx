@@ -1,9 +1,10 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import './App.css';
 import { AppProvider, useStore } from './store';
 import { ToastProvider } from './components/Toast';
 import { NavContext, type Nav, type Params, type Route } from './nav';
 import { BottomNav } from './components/BottomNav';
+import { SplashScreen } from './screens/SplashScreen';
 import { OnboardingScreen } from './screens/OnboardingScreen';
 import { HomeScreen } from './screens/HomeScreen';
 import { FeelScreen } from './screens/FeelScreen';
@@ -17,8 +18,7 @@ interface Entry { route: Route; params: Params; }
 
 function Router() {
   const { profile } = useStore();
-  const start: Entry = profile.onboarded ? { route: 'home', params: {} } : { route: 'onboarding', params: {} };
-  const [stack, setStack] = useState<Entry[]>([start]);
+  const [stack, setStack] = useState<Entry[]>([{ route: 'splash', params: {} }]);
 
   const navigate = useCallback((route: Route, params: Params = {}) => {
     setStack((s) => [...s, { route, params }]);
@@ -37,12 +37,19 @@ function Router() {
 
   const top = stack[stack.length - 1];
 
+  // Show the branded splash briefly, then move on to home (or onboarding).
+  useEffect(() => {
+    if (top.route !== 'splash') return;
+    const t = setTimeout(() => reset(profile.onboarded ? 'home' : 'onboarding'), 2200);
+    return () => clearTimeout(t);
+  }, [top.route, profile.onboarded, reset]);
+
   const nav = useMemo<Nav>(
     () => ({ route: top.route, params: top.params, navigate, back, reset, canBack: stack.length > 1 }),
     [top, navigate, back, reset, stack.length]
   );
 
-  const showNav = top.route !== 'onboarding';
+  const showNav = top.route !== 'onboarding' && top.route !== 'splash';
 
   return (
     <NavContext.Provider value={nav}>
@@ -58,6 +65,8 @@ function Router() {
 
 function Screen({ route }: { route: Route }) {
   switch (route) {
+    case 'splash':
+      return <SplashScreen />;
     case 'onboarding':
       return <OnboardingScreen />;
     case 'home':
