@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/fetch-kinyarwanda.cjs",
+    "prebuild": "node scripts/fetch-kinyarwanda.cjs && node scripts/fetch-hymns.cjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "data:bible": "node scripts/fetch-bible.cjs",
     "data:kin": "node scripts/fetch-kinyarwanda.cjs",
+    "data:hymns": "node scripts/fetch-hymns.cjs",
     "data:curate": "node scripts/build-curation.cjs",
     "data": "npm run data:bible && npm run data:kin && npm run data:curate"
   },

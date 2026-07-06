@@ -39,7 +39,7 @@ export default defineConfig({
         // Precache the app shell (hashed JS/CSS/HTML + icons). The large Bible JSON
         // files are intentionally excluded here and cached at runtime on first use.
         globPatterns: ['**/*.{js,css,html,ico,png,jpeg,svg,woff2}'],
-        globIgnores: ['**/bible/*.json'],
+        globIgnores: ['**/bible/*.json', '**/hymns/*.json'],
         navigateFallback: '/index.html',
         runtimeCaching: [
           {
@@ -49,6 +49,16 @@ export default defineConfig({
             options: {
               cacheName: 'wayfind-bible',
               expiration: { maxEntries: 6, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            // Hymnal (Gushimisha + Agakiza) — same offline-first treatment.
+            urlPattern: ({ url }) => url.pathname.includes('/hymns/') && url.pathname.endsWith('.json'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'wayfind-hymns',
+              expiration: { maxEntries: 2, maxAgeSeconds: 60 * 60 * 24 * 365 },
               cacheableResponse: { statuses: [0, 200] },
             },
           },

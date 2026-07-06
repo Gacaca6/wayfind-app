@@ -1,4 +1,4 @@
-import { Heart, BookOpen, ChevronRight } from 'lucide-react';
+import { Heart, BookOpen, Music, ChevronRight } from 'lucide-react';
 import { useStore } from '../store';
 import { useNav } from '../nav';
 import { dailyVerse } from '../lib/daily';
@@ -76,6 +76,20 @@ export function HomeScreen() {
             </span>
           </span>
           <ChevronRight className="h-5 w-5 shrink-0 text-white/80" aria-hidden="true" />
+        </button>
+
+        <button
+          onClick={() => nav.navigate('hymns')}
+          className="flex w-full items-center justify-between rounded-2xl border-2 border-wayfind-amber/40 bg-[var(--ui-surface)] px-6 py-5 text-left font-dmsans font-semibold text-[var(--ui-brown)] transition-all hover:border-wayfind-amber active:scale-[0.99]"
+        >
+          <span className="flex items-center gap-3">
+            <Music className="h-5 w-5 text-wayfind-amber" aria-hidden="true" />
+            <span>
+              Indirimbo zo mu Gitabo
+              <span className="block text-sm font-normal text-[var(--ui-muted)]">Gushimisha & Agakiza · 552 hymns</span>
+            </span>
+          </span>
+          <ChevronRight className="h-5 w-5 shrink-0 text-wayfind-amber" aria-hidden="true" />
         </button>
       </div>
 

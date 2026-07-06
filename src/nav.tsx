@@ -8,6 +8,8 @@ export type Route =
   | 'results'
   | 'verse'
   | 'reader'
+  | 'hymns'
+  | 'hymn'
   | 'saved'
   | 'settings';
 

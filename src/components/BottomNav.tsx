@@ -2,7 +2,7 @@ import { Home, Heart, BookOpen, Bookmark, Settings } from 'lucide-react';
 import { useNav, type Route } from '../nav';
 
 const ITEMS: { route: Route; label: string; icon: typeof Home; match: Route[] }[] = [
-  { route: 'home', label: 'Home', icon: Home, match: ['home'] },
+  { route: 'home', label: 'Home', icon: Home, match: ['home', 'hymns', 'hymn'] },
   { route: 'feel', label: 'Feel', icon: Heart, match: ['feel', 'results', 'verse'] },
   { route: 'reader', label: 'Bible', icon: BookOpen, match: ['reader'] },
   { route: 'saved', label: 'Saved', icon: Bookmark, match: ['saved'] },

@@ -89,7 +89,8 @@ export function SettingsScreen() {
         </p>
         <p className="caption mt-3">
           Kinyarwanda text: Bibiliya Yera (BIR) © Bible Society of Rwanda. Used with thanks for
-          ministry purposes.
+          ministry purposes. Indirimbo: Gushimisha &amp; Agakiza hymnbooks, via the open
+          Indirimbo Zikundwa dataset — with gratitude to the churches that compiled them.
         </p>
       </div>
 

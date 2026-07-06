@@ -27,3 +27,7 @@ Thumbs.db
 # offline, but NOT committed to this public repo (© Bible Society of Rwanda).
 # Regenerate locally with: npm run data:kin
 public/bible/kin.json
+
+# Hymnal text (Gushimisha + Agakiza) — church hymnbook compilations without an
+# explicit open license; same treatment as kin.json. Regenerate: npm run data:hymns
+public/hymns/hymns.json

@@ -11,6 +11,8 @@ import { FeelScreen } from './screens/FeelScreen';
 import { ResultsScreen } from './screens/ResultsScreen';
 import { VerseDetailScreen } from './screens/VerseDetailScreen';
 import { ReaderScreen } from './screens/ReaderScreen';
+import { HymnsScreen } from './screens/HymnsScreen';
+import { HymnDetailScreen } from './screens/HymnDetailScreen';
 import { SavedScreen } from './screens/SavedScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
 
@@ -79,6 +81,10 @@ function Screen({ route }: { route: Route }) {
       return <VerseDetailScreen />;
     case 'reader':
       return <ReaderScreen />;
+    case 'hymns':
+      return <HymnsScreen />;
+    case 'hymn':
+      return <HymnDetailScreen />;
     case 'saved':
       return <SavedScreen />;
     case 'settings':
