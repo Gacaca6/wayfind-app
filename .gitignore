@@ -23,10 +23,10 @@ Thumbs.db
 # Cache
 .vite/
 
-# Copyrighted Kinyarwanda Bible text — bundled locally so installed apps work
-# offline, but NOT committed to this public repo (© Bible Society of Rwanda).
-# Regenerate locally with: npm run data:kin
-public/bible/kin.json
+# Kinyarwanda Bible (public/bible/kin.json) IS committed: Bibiliya Yera © 2001
+# Bible Society of Rwanda, extracted from the PDF the Bible Society provided,
+# credited in the app's About screen. Regenerate from the PDF with:
+#   python scripts/extract-kinyarwanda-pdf.py <path-to-pdf>
 
 # Hymnal text (Gushimisha + Agakiza) — church hymnbook compilations without an
 # explicit open license; same treatment as kin.json. Regenerate: npm run data:hymns
