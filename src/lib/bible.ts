@@ -3,10 +3,18 @@
 // disk), so the app shell stays light and everything works offline after first load.
 import { bookIndexByName, books } from '../data/books';
 
-// KJV/WEB are English; KIN is Kinyarwanda (BIR — Bibiliya Yera, © Bible Society
-// of Rwanda 2001), shown alongside the English rather than in the English toggle.
+// Three full versions: KJV and WEB (English, public domain) and KIN — the
+// Kinyarwanda Bibiliya Yera (© 2001 Bible Society of Rwanda), extracted from
+// the PDF provided by the Bible Society. KIN keeps its printed structure,
+// which differs slightly from KJV/WEB in parts of the OT (e.g. Joel has 4
+// chapters, Malachi 3), so chapter counts must come from the translation data.
 export type Translation = 'KJV' | 'WEB' | 'KIN';
-export type EnglishTranslation = 'KJV' | 'WEB';
+
+export const TRANSLATIONS: { id: Translation; label: string; description: string }[] = [
+  { id: 'KJV', label: 'KJV', description: 'King James Version' },
+  { id: 'WEB', label: 'WEB', description: 'World English Bible · easier to read' },
+  { id: 'KIN', label: 'KIN', description: 'Bibiliya Yera · Ikinyarwanda' },
+];
 
 interface BibleData {
   t: string;
@@ -70,6 +78,17 @@ export async function getPassage(
     if (ch[v - 1] !== undefined) parts.push(ch[v - 1]);
   }
   return parts.join(' ');
+}
+
+// Chapter counts per book for a translation (KIN's printed structure differs
+// from KJV/WEB in a few OT books). Falls back to books.json metadata counts.
+export async function getChapterCounts(t: Translation): Promise<number[]> {
+  try {
+    const data = await loadTranslation(t);
+    return books.map((meta, i) => data.b[i]?.length || meta.chapters);
+  } catch {
+    return books.map((meta) => meta.chapters);
+  }
 }
 
 // Synchronous read from the in-memory cache only (returns null if not loaded yet).

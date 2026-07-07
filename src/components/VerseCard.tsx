@@ -2,7 +2,6 @@ import { Bookmark, Share2 } from 'lucide-react';
 import { useStore, type SavedVerse } from '../store';
 import { useToast } from './Toast';
 import { shareVerse } from '../lib/share';
-import { useKinyarwanda } from '../hooks/useKinyarwanda';
 
 export interface VerseLike {
   reference: string;
@@ -18,17 +17,15 @@ export interface VerseLike {
 }
 
 export function VerseCard({ verse, onOpen }: { verse: VerseLike; onOpen?: () => void }) {
-  const { isSaved, toggleSave, showKinyarwanda } = useStore();
+  const { isSaved, toggleSave } = useStore();
   const toast = useToast();
   const saved = isSaved(verse.reference);
   const translation = verse.translation || 'KJV';
-  const kin = useKinyarwanda(verse, showKinyarwanda);
 
   const asSaved = (): SavedVerse => ({
     id: verse.reference,
     reference: verse.reference,
     text: verse.text,
-    kinyarwanda: kin || undefined,
     translation,
     reflection: verse.reflection,
     emotion: verse.emotion,
@@ -51,12 +48,7 @@ export function VerseCard({ verse, onOpen }: { verse: VerseLike; onOpen?: () => 
         }
       }}
     >
-      <p className="verse-text mb-2 line-clamp-5">{verse.text}</p>
-      {showKinyarwanda && kin && (
-        <p lang="rw" className="verse-text mb-3 line-clamp-5 border-l-2 border-wayfind-amber/40 pl-3 italic text-[var(--ui-muted)]">
-          {kin}
-        </p>
-      )}
+      <p className="verse-text mb-3 line-clamp-5">{verse.text}</p>
       <div className="flex items-center justify-between">
         <p className="verse-reference">
           {verse.reference} <span className="text-[var(--ui-muted)]">· {translation}</span>

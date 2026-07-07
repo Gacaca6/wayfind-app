@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, ChevronDown, Bookmark, Share2, Copy, X } from 'lucide-react';
 import { books, bookIndexByName } from '../data/books';
-import { getChapter, type Translation } from '../lib/bible';
+import { getChapter, getChapterCounts, TRANSLATIONS, type Translation } from '../lib/bible';
 import { useStore, type SavedVerse } from '../store';
 import { useNav } from '../nav';
 import { useToast } from '../components/Toast';
@@ -12,12 +12,14 @@ interface Loc { book: string; chapter: number; }
 
 export function ReaderScreen() {
   const nav = useNav();
-  const { translation, setTranslation, isSaved, toggleSave, showKinyarwanda, setShowKinyarwanda } = useStore();
+  const { translation, setTranslation, isSaved, toggleSave } = useStore();
   const toast = useToast();
 
   const [loc, setLoc] = useLocalStorage<Loc>('wf.reader', { book: 'John', chapter: 1 });
   const [verses, setVerses] = useState<string[]>([]);
-  const [kinVerses, setKinVerses] = useState<string[]>([]);
+  // Per-translation chapter counts (KIN's printed structure differs from KJV/WEB
+  // in a few OT books, e.g. Joel 4 / Malachi 3).
+  const [chapterCounts, setChapterCounts] = useState<number[]>(books.map((b) => b.chapters));
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<number | null>(null);
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -63,17 +65,23 @@ export function ReaderScreen() {
     };
   }, [translation, loc.book, loc.chapter]);
 
-  // Always load the Kinyarwanda chapter (cached after first fetch); the toggle
-  // controls whether it's rendered. Loading it eagerly keeps the toggle instant.
+  // Keep chapter counts in sync with the selected translation, clamping the
+  // current chapter if the new translation's book is shorter.
   useEffect(() => {
     let cancelled = false;
-    getChapter('KIN', loc.book, loc.chapter)
-      .then((v) => !cancelled && setKinVerses(v))
-      .catch(() => !cancelled && setKinVerses([]));
+    getChapterCounts(translation).then((counts) => {
+      if (cancelled) return;
+      setChapterCounts(counts);
+      const bi = bookIndexByName[loc.book];
+      if (bi !== undefined && loc.chapter > counts[bi]) {
+        setLoc({ book: loc.book, chapter: counts[bi] });
+      }
+    });
     return () => {
       cancelled = true;
     };
-  }, [loc.book, loc.chapter]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [translation]);
 
   const go = (delta: number) => {
     highlightVerse.current = null;
@@ -81,8 +89,8 @@ export function ReaderScreen() {
     let ch = loc.chapter + delta;
     if (ch < 1) {
       bi = (bi - 1 + books.length) % books.length;
-      ch = books[bi].chapters;
-    } else if (ch > books[bi].chapters) {
+      ch = chapterCounts[bi];
+    } else if (ch > chapterCounts[bi]) {
       bi = (bi + 1) % books.length;
       ch = 1;
     }
@@ -98,7 +106,6 @@ export function ReaderScreen() {
       id: verseRef(selected),
       reference: verseRef(selected),
       text: selectedText,
-      kinyarwanda: kinVerses[selected - 1] || undefined,
       translation,
       book: loc.book,
       chapter: loc.chapter,
@@ -122,41 +129,26 @@ export function ReaderScreen() {
           <ChevronDown className="h-4 w-4" aria-hidden="true" />
         </button>
         <div className="inline-flex rounded-full border border-[var(--ui-border)] p-1 text-sm">
-          {(['KJV', 'WEB'] as Translation[]).map((t) => (
+          {TRANSLATIONS.map(({ id }) => (
             <button
-              key={t}
-              onClick={() => setTranslation(t)}
-              aria-pressed={translation === t}
+              key={id}
+              onClick={() => setTranslation(id)}
+              aria-pressed={translation === id}
               className={`rounded-full px-3 py-1 font-dmsans transition-colors ${
-                translation === t ? 'bg-wayfind-amber text-white' : 'text-[var(--ui-muted)]'
+                translation === id ? 'bg-wayfind-amber text-white' : 'text-[var(--ui-muted)]'
               }`}
             >
-              {t}
+              {id}
             </button>
           ))}
         </div>
       </div>
 
-      <div className="mb-4 flex items-center justify-between gap-2">
-        <div>
-          <h1 className="section-header text-2xl">
-            {loc.book} {loc.chapter}
-          </h1>
-          <p className="caption">{translation === 'WEB' ? 'World English Bible · easier to read' : 'King James Version'}</p>
-        </div>
-        <button
-          role="switch"
-          aria-checked={showKinyarwanda}
-          aria-label="Show Kinyarwanda"
-          onClick={() => setShowKinyarwanda(!showKinyarwanda)}
-          className={`shrink-0 rounded-full border px-3 py-1.5 font-dmsans text-sm transition-colors ${
-            showKinyarwanda
-              ? 'border-wayfind-amber bg-wayfind-amber text-white'
-              : 'border-[var(--ui-border)] text-[var(--ui-muted)]'
-          }`}
-        >
-          Ikinyarwanda
-        </button>
+      <div className="mb-4">
+        <h1 className="section-header text-2xl">
+          {loc.book} {loc.chapter}
+        </h1>
+        <p className="caption">{TRANSLATIONS.find((t) => t.id === translation)?.description}</p>
       </div>
 
       {/* Chapter text */}
@@ -166,10 +158,19 @@ export function ReaderScreen() {
             <div key={i} className="skeleton h-4 w-full rounded" />
           ))}
         </div>
+      ) : verses.length === 0 || verses.every((t) => !t) ? (
+        <p className="body-text mt-8 text-center opacity-70">
+          {translation === 'KIN'
+            ? 'Iki gice ntikiboneka muri iyi kopi ya Bibiliya Yera. Gerageza KJV cyangwa WEB.'
+            : 'This chapter could not be loaded. Check your connection once — after that it works offline.'}
+        </p>
       ) : (
-        <div className="reading">
+        <div className="reading" lang={translation === 'KIN' ? 'rw' : 'en'}>
           {verses.map((t, i) => {
             const v = i + 1;
+            // Combined ranges in the printed Kinyarwanda edition (e.g. Rom 9:11-13)
+            // leave follow-on verse slots empty — skip rendering those numbers.
+            if (!t) return null;
             const isHi = highlightVerse.current === v;
             return (
               <p
@@ -187,15 +188,6 @@ export function ReaderScreen() {
                 >
                   {t}
                 </span>
-                {showKinyarwanda && kinVerses[i] && (
-                  <span
-                    lang="rw"
-                    className="mt-1 block font-lora italic text-[var(--ui-muted)]"
-                    style={{ fontSize: 'calc(var(--verse-size, 19px) - 1px)', lineHeight: 1.65 }}
-                  >
-                    {kinVerses[i]}
-                  </span>
-                )}
               </p>
             );
           })}
@@ -250,6 +242,7 @@ export function ReaderScreen() {
       {pickerOpen && (
         <BookPicker
           current={loc}
+          chapterCounts={chapterCounts}
           onPick={(book, chapter) => {
             highlightVerse.current = null;
             setLoc({ book, chapter });
@@ -272,15 +265,17 @@ function IconBtn({ label, onClick, children }: { label: string; onClick: () => v
 
 function BookPicker({
   current,
+  chapterCounts,
   onPick,
   onClose,
 }: {
   current: Loc;
+  chapterCounts: number[];
   onPick: (book: string, chapter: number) => void;
   onClose: () => void;
 }) {
   const [book, setBook] = useState<string | null>(null);
-  const chapters = book ? books[bookIndexByName[book]].chapters : 0;
+  const chapters = book ? chapterCounts[bookIndexByName[book]] : 0;
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-[var(--ui-bg)]" role="dialog" aria-modal="true" aria-label="Choose a book">

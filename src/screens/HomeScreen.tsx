@@ -3,7 +3,6 @@ import { useStore } from '../store';
 import { useNav } from '../nav';
 import { dailyVerse } from '../lib/daily';
 import { VerseCard } from '../components/VerseCard';
-import { useKinyarwanda } from '../hooks/useKinyarwanda';
 
 function greeting(): string {
   const h = new Date().getHours();
@@ -13,10 +12,9 @@ function greeting(): string {
 }
 
 export function HomeScreen() {
-  const { profile, saved, showKinyarwanda } = useStore();
+  const { profile, saved } = useStore();
   const nav = useNav();
   const verse = dailyVerse();
-  const verseKin = useKinyarwanda(verse, showKinyarwanda);
   const today = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
 
   return (
@@ -38,13 +36,8 @@ export function HomeScreen() {
           onClick={() => nav.navigate('verse', { verse })}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && nav.navigate('verse', { verse })}
         >
-          <p className="verse-text mb-2">{verse.text}</p>
-          {showKinyarwanda && verseKin && (
-            <p lang="rw" className="verse-text mb-3 border-l-2 border-wayfind-amber/40 pl-3 italic text-[var(--ui-muted)]">
-              {verseKin}
-            </p>
-          )}
-          <p className="verse-reference">{verse.reference} · KJV{showKinyarwanda && verseKin ? ' & Kinyarwanda' : ''}</p>
+          <p className="verse-text mb-3">{verse.text}</p>
+          <p className="verse-reference">{verse.reference} · KJV</p>
         </div>
       </div>
 

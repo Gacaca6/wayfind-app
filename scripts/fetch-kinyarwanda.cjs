@@ -1,13 +1,14 @@
-// Downloads the Kinyarwanda Bible (BIR — "Bibiliya Ijambo ry'Imana", 2001) from
-// the Beblia Holy-Bible-XML-Format repo and normalizes it into compact
-// public/bible/kin.json (same shape as kjv/web: { t, b[book][chapter][verse] }).
+// FALLBACK downloader for the Kinyarwanda Bible (older BIR edition via Beblia).
 //
-// LICENSING NOTE (read before redistributing):
-//   The underlying text is "Bibiliya Yera © Bible Society of Rwanda, 2001".
-//   Beblia re-hosts it with a blanket "use freely" note, but Beblia is not the
-//   rights holder. It is bundled here at the project owner's informed decision
-//   for a free, non-commercial Scripture app; a permission request to the Bible
-//   Society of Rwanda is on file (see docs/kinyarwanda-permission-request.md).
+// The CANONICAL Kinyarwanda text for Wayfind is the "Mbere na mbere" edition of
+// Bibiliya Yera (© 2001 Bible Society of Rwanda), extracted from the PDF the
+// Bible Society provided — see scripts/extract-kinyarwanda-pdf.py. When that
+// PDF-derived public/bible/kin.json is present, this script does nothing.
+//
+// Only if kin.json is missing entirely (e.g. a fresh CI build without the PDF)
+// does this fetch the older Beblia BIR edition so the app is not left without
+// Kinyarwanda. The two editions differ in wording (Gen 1:1 "Mu ntangiriro" vs
+// "Mbere na mbere") — prefer regenerating from the PDF.
 //
 // Run: node scripts/fetch-kinyarwanda.cjs
 const fs = require('fs');

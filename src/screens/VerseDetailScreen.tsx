@@ -10,7 +10,7 @@ import type { VerseLike } from '../components/VerseCard';
 
 export function VerseDetailScreen() {
   const nav = useNav();
-  const { translation, isSaved, toggleSave, showKinyarwanda } = useStore();
+  const { translation, isSaved, toggleSave } = useStore();
   const toast = useToast();
 
   const verse = nav.params.verse as VerseLike;
@@ -37,30 +37,15 @@ export function VerseDetailScreen() {
     };
   }, [display, verse, hasLocation, curatedIsKjv]);
 
-  // Kinyarwanda for this verse: use the curated text if present, else fetch by location.
-  const [kinFetched, setKinFetched] = useState<string | null>(verse?.kinyarwanda || null);
-  useEffect(() => {
-    if (verse?.kinyarwanda || !hasLocation) return;
-    let cancelled = false;
-    getPassage('KIN', verse.book!, verse.chapter!, verse.verseStart!, verse.verseEnd || verse.verseStart!)
-      .then((t) => !cancelled && setKinFetched(t || null))
-      .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
-  }, [verse, hasLocation]);
-
   if (!verse) return null;
 
   const text = override && override.t === display ? override.text : verse.text;
-  const kinText = verse.kinyarwanda || kinFetched || '';
   const saved = isSaved(verse.reference);
 
   const asSaved = (): SavedVerse => ({
     id: verse.reference,
     reference: verse.reference,
     text,
-    kinyarwanda: kinText,
     translation: display,
     reflection: verse.reflection,
     emotion: verse.emotion,
@@ -76,7 +61,7 @@ export function VerseDetailScreen() {
 
       {/* Translation toggle */}
       <div className="mb-6 inline-flex rounded-full border border-[var(--ui-border)] p-1">
-        {(['KJV', 'WEB'] as Translation[]).map((t) => (
+        {(['KJV', 'WEB', 'KIN'] as Translation[]).map((t) => (
           <button
             key={t}
             onClick={() => setDisplay(t)}
@@ -85,28 +70,22 @@ export function VerseDetailScreen() {
               display === t ? 'bg-wayfind-amber text-white' : 'text-[var(--ui-muted)]'
             }`}
           >
-            {t === 'WEB' ? 'WEB · easier' : 'KJV'}
+            {t === 'WEB' ? 'WEB · easier' : t === 'KIN' ? 'Ikinyarwanda' : 'KJV'}
           </button>
         ))}
       </div>
 
       {/* Verse */}
       <blockquote className="mb-6 text-center">
-        <p className="verse-text text-balance leading-loose" style={{ fontSize: 'calc(var(--verse-size, 19px) + 4px)' }}>
+        <p
+          className="verse-text text-balance leading-loose"
+          style={{ fontSize: 'calc(var(--verse-size, 19px) + 4px)' }}
+          lang={display === 'KIN' ? 'rw' : 'en'}
+        >
           {text}
         </p>
-        {showKinyarwanda && kinText && (
-          <p
-            className="verse-text text-balance mt-4 italic leading-loose text-[var(--ui-muted)]"
-            style={{ fontSize: 'calc(var(--verse-size, 19px) + 1px)' }}
-            lang="rw"
-          >
-            {kinText}
-          </p>
-        )}
         <cite className="verse-reference mt-4 block not-italic text-base">
-          {verse.reference} · {display}
-          {showKinyarwanda && kinText && <span className="text-[var(--ui-muted)]"> &amp; Kinyarwanda</span>}
+          {verse.reference} · {display === 'KIN' ? 'Bibiliya Yera' : display}
         </cite>
       </blockquote>
 

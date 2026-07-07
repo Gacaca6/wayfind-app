@@ -1,10 +1,10 @@
-import { BookOpen, Moon, Type, Info, Trash2, Languages } from 'lucide-react';
+import { BookOpen, Moon, Type, Info, Trash2 } from 'lucide-react';
 import { useStore } from '../store';
 import { useToast } from '../components/Toast';
-import type { EnglishTranslation } from '../lib/bible';
+import { TRANSLATIONS } from '../lib/bible';
 
 export function SettingsScreen() {
-  const { profile, setProfile, translation, setTranslation, darkMode, setDarkMode, fontSize, setFontSize, showKinyarwanda, setShowKinyarwanda } = useStore();
+  const { profile, setProfile, translation, setTranslation, darkMode, setDarkMode, fontSize, setFontSize } = useStore();
   const toast = useToast();
 
   return (
@@ -25,26 +25,21 @@ export function SettingsScreen() {
       </div>
 
       {/* Default translation */}
-      <Row icon={<BookOpen className="h-5 w-5" aria-hidden="true" />} label="Default translation">
+      <Row icon={<BookOpen className="h-5 w-5" aria-hidden="true" />} label="Bible version">
         <div className="inline-flex rounded-full border border-[var(--ui-border)] p-1 text-sm">
-          {(['KJV', 'WEB'] as EnglishTranslation[]).map((t) => (
+          {TRANSLATIONS.map(({ id }) => (
             <button
-              key={t}
-              onClick={() => setTranslation(t)}
-              aria-pressed={translation === t}
+              key={id}
+              onClick={() => setTranslation(id)}
+              aria-pressed={translation === id}
               className={`rounded-full px-3 py-1 font-dmsans transition-colors ${
-                translation === t ? 'bg-wayfind-amber text-white' : 'text-[var(--ui-muted)]'
+                translation === id ? 'bg-wayfind-amber text-white' : 'text-[var(--ui-muted)]'
               }`}
             >
-              {t}
+              {id}
             </button>
           ))}
         </div>
-      </Row>
-
-      {/* Kinyarwanda */}
-      <Row icon={<Languages className="h-5 w-5" aria-hidden="true" />} label="Show Kinyarwanda">
-        <Switch checked={showKinyarwanda} onChange={setShowKinyarwanda} label="Show Kinyarwanda alongside English" />
       </Row>
 
       {/* Dark mode */}
@@ -82,15 +77,16 @@ export function SettingsScreen() {
         </p>
         <p className="body-text text-sm leading-relaxed">
           Wayfind helps you find scripture for whatever you’re feeling, and read the whole Bible with ease.
-          English is included as the <strong>King James Version</strong> (familiar) and the
-          <strong> World English Bible</strong> (easy to read), with <strong>Kinyarwanda</strong> shown
-          alongside so you can read God’s Word in your own language. Everything works offline.
+          Three versions are included: the <strong>King James Version</strong> (familiar), the
+          <strong> World English Bible</strong> (easy to read), and <strong>Bibiliya Yera</strong> in
+          Kinyarwanda — so you can read God’s Word in your own language. Everything works offline.
           No accounts, no ads, no cost.
         </p>
         <p className="caption mt-3">
-          Kinyarwanda text: Bibiliya Yera (BIR) © Bible Society of Rwanda. Used with thanks for
-          ministry purposes. Indirimbo: Gushimisha &amp; Agakiza hymnbooks, via the open
-          Indirimbo Zikundwa dataset — with gratitude to the churches that compiled them.
+          Kinyarwanda Scripture: <strong>Bibiliya Yera © 2001, Bible Society of Rwanda</strong> — used
+          with grateful acknowledgement of the Bible Society of Rwanda, who provided the text of this
+          translation. Indirimbo: Gushimisha &amp; Agakiza hymnbooks, via the open Indirimbo Zikundwa
+          dataset — with gratitude to the churches that compiled them.
         </p>
       </div>
 
@@ -98,7 +94,7 @@ export function SettingsScreen() {
       <button
         onClick={() => {
           if (confirm('Clear saved verses and reset settings on this device?')) {
-            ['wf.profile', 'wf.saved', 'wf.recents', 'wf.translation', 'wf.darkMode', 'wf.fontSize', 'wf.reader', 'wf.showKinyarwanda'].forEach((k) =>
+            ['wf.profile', 'wf.saved', 'wf.recents', 'wf.translation', 'wf.darkMode', 'wf.fontSize', 'wf.reader', 'wf.showKinyarwanda', 'wf.favoriteHymns'].forEach((k) =>
               localStorage.removeItem(k)
             );
             toast.show('Cleared — reloading');

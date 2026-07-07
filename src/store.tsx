@@ -38,9 +38,6 @@ interface Store {
   setDarkMode: (v: boolean) => void;
   fontSize: number;
   setFontSize: (n: number) => void;
-  showKinyarwanda: boolean;
-  setShowKinyarwanda: (v: boolean) => void;
-
   favoriteHymns: string[];
   toggleFavoriteHymn: (id: string) => void;
   isFavoriteHymn: (id: string) => boolean;
@@ -55,7 +52,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [translation, setTranslation] = useLocalStorage<Translation>('wf.translation', 'KJV');
   const [darkMode, setDarkMode] = useLocalStorage<boolean>('wf.darkMode', false);
   const [fontSize, setFontSize] = useLocalStorage<number>('wf.fontSize', 19);
-  const [showKinyarwanda, setShowKinyarwanda] = useLocalStorage<boolean>('wf.showKinyarwanda', true);
   const [favoriteHymns, setFavoriteHymns] = useLocalStorage<string[]>('wf.favoriteHymns', []);
 
   // Apply theme + reading size to the document.
@@ -90,13 +86,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setDarkMode,
     fontSize,
     setFontSize,
-    showKinyarwanda,
-    setShowKinyarwanda,
     favoriteHymns,
     toggleFavoriteHymn: (id) =>
       setFavoriteHymns((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [id, ...prev])),
     isFavoriteHymn: (id) => favoriteHymns.includes(id),
-  }), [profile, saved, recents, translation, darkMode, fontSize, showKinyarwanda, favoriteHymns, setProfile, setSaved, setRecents, setTranslation, setDarkMode, setFontSize, setShowKinyarwanda, setFavoriteHymns]);
+  }), [profile, saved, recents, translation, darkMode, fontSize, favoriteHymns, setProfile, setSaved, setRecents, setTranslation, setDarkMode, setFontSize, setFavoriteHymns]);
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
 }
