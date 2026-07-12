@@ -1,0 +1,123 @@
+// Study notes — struggle part D (confused) + need part A (hurting, heartbroken).
+module.exports = {
+  'James 1:5': {
+    story: 'James wrote to believers scattered by persecution, facing decisions with no roadmap. His counsel begins with the most encouraging job description of God in the New Testament: the generous giver who never rolls His eyes.',
+    meaning: '"If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not" — liberally means open-handedly; "upbraideth not" means He never scolds you for needing to ask. The promise closes flat: "it shall be given him."',
+    you: 'You hesitate to ask God for direction because you feel you should already know. This verse removes the shame: asking is the plan. He gives wisdom generously and never makes you feel foolish for the request.',
+    prayer: 'Generous Father, I lack wisdom for this — and You said to ask. Give liberally; I am listening without fear of scolding. Amen.',
+  },
+  '1 Corinthians 14:33': {
+    story: 'Corinthian worship had become chaos — everyone talking over everyone. Paul\'s correction rests on a statement about God\'s character that reaches far beyond church services.',
+    meaning: '"For God is not the author of confusion, but of peace" — confusion is not His signature; order and peace are. Where He governs, things clarify. This does not mean life is never confusing — it means the confusion is not His gift to you, and clarity is worth asking Him for.',
+    you: 'When your head is a noisy committee, remember whose voice to filter for: the one that brings peace. God\'s guidance may stretch you, but it does not arrive as panic and fog.',
+    prayer: 'God of peace, quiet the noise in my mind. Author order in my thoughts, and let me recognise Your voice by its peace. Amen.',
+  },
+  'Psalm 119:105': {
+    story: 'This verse comes from the Bible\'s longest psalm — 176 verses in praise of God\'s Word. Its most famous line pictures a traveler on a pitch-dark ancient road with a small oil lamp.',
+    meaning: '"Thy word is a lamp unto my feet, and a light unto my path" — a lamp in that era lit only the next step or two, not the horizon. God\'s Word usually guides the same way: enough light for now, renewed as you move.',
+    you: 'You want a floodlit map of the next five years; God offers a lamp for the next step. Take the step you have light for — the lamp moves with you, and the path assembles behind you.',
+    prayer: 'Lord, Your Word is my lamp. I stop demanding the horizon and take the next lit step. Keep the light coming. Amen.',
+  },
+  'Psalm 32:8': {
+    story: 'Right after David\'s celebrated confession and forgiveness in this psalm, God Himself speaks — a personal promise of ongoing guidance, delivered with unusual tenderness.',
+    meaning: '"I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with mine eye" — three verbs of personalised direction. Guiding "with mine eye" suggests closeness — the way you catch the glance of someone who knows you well across a room.',
+    you: 'God\'s guidance is relational, not mechanical. He is not posting directions from a distance; He is walking with you, catching your eye. Stay close enough to notice the glance.',
+    prayer: 'Lord, instruct me, teach me, guide me with Your eye. Keep me close enough to You to catch the look. Amen.',
+  },
+  'Isaiah 30:21': {
+    story: 'Isaiah promised this to a stubborn people who kept running to Egypt for help instead of waiting on God. Even for them, a day would come when guidance would be this intimate.',
+    meaning: '"Thine ears shall hear a word behind thee, saying, This is the way, walk ye in it, when ye turn to the right hand, and when ye turn to the left" — a voice behind, like a shepherd walking after his flock, correcting drift in real time.',
+    you: 'The promise activates at the turning points — precisely when you drift right or left. Keep your ears open in Scripture and prayer; correction is a form of love, and He gives it in time to use it.',
+    prayer: 'Shepherd behind me, speak when I drift — "this is the way" — and give me quick ears and willing feet. Amen.',
+  },
+  'Jeremiah 33:3': {
+    story: 'Jeremiah received this promise while locked in a courtyard prison as Jerusalem fell around him — proof that God\'s invitation to ask for revelation is not suspended by dungeons or disasters.',
+    meaning: '"Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not" — an open line, a guaranteed answer, and disclosures beyond your current knowledge. Some clarity is reserved for those who call.',
+    you: 'Some of what confuses you is not meant to be figured out — it is meant to be asked about. God has "great and mighty things" filed under your question. Call; that is the retrieval system.',
+    prayer: 'Lord, I call to You about this. Answer me — show me what I cannot see from here. Amen.',
+  },
+  'Psalm 37:23': {
+    story: 'In the same psalm that counsels against fretting, David drops this quiet assurance about how a good person\'s life actually unfolds — step by step, under supervision.',
+    meaning: '"The steps of a good man are ordered by the Lord: and he delighteth in his way" — ordered means established, made firm. And the surprise in the second clause: God *delights* in the journey of His people — He enjoys walking you home.',
+    you: 'Even when you cannot perceive a plan, your steps are being ordered — including the ones that felt like detours. And you are not a burden He manages; you are a walk He delights in.',
+    prayer: 'Lord, order my steps today — and thank You, amazingly, that You delight in my way. Amen.',
+  },
+  'Romans 8:28': {
+    story: 'Paul wrote this to believers facing suffering he would soon share — he was eventually executed in Rome. The verse is not naive optimism; it is a claim about what God does with wreckage.',
+    meaning: '"All things work together for good to them that love God, to them who are the called according to his purpose" — not "all things are good," but all things are *worked together* — like bitter ingredients baked into bread. The chef is the guarantee, not the ingredients.',
+    you: 'The confusing chapter you are in is an ingredient, not the meal. You cannot taste the outcome from inside the mixing — but the promise stands: for those who love God, the finished work is good.',
+    prayer: 'Father, I cannot see what You are making — but I love You, and I trust the working-together. Finish it for good. Amen.',
+  },
+  'Proverbs 16:9': {
+    story: 'Solomon — a king who planned building projects, alliances, and campaigns — recorded this observation about the relationship between human planning and divine steering.',
+    meaning: '"A man\'s heart deviseth his way: but the Lord directeth his steps" — planning is assumed, not condemned; you devise, He directs. The comfort is in the division of labour: your best plans remain editable by Someone who sees the whole map.',
+    you: 'Make your plans — then hold them loosely. When God redirects, it is not your failure; it is His steering. The detour you are resenting may be the direction itself.',
+    prayer: 'Lord, here are my plans — take the pen. Direct my actual steps, and give me peace when they differ from my drawings. Amen.',
+  },
+  'Psalm 34:19': {
+    story: 'David wrote this psalm as a fugitive who had escaped death by inches. His summary of the righteous life is bracingly honest about the quantity of trouble — and the totality of the rescue.',
+    meaning: '"Many are the afflictions of the righteous: but the Lord delivereth him out of them all" — righteousness does not reduce afflictions to zero; it attaches a Deliverer to every one of them. "Out of them all" — none exempted, none forgotten.',
+    you: 'Your suffering does not mean you are off-course; the verse budgets "many" afflictions for the righteous. But hold the second half: no affliction of yours is outside the deliverance schedule.',
+    prayer: 'Lord, my afflictions are real and many — but so is Your promise. Deliver me out of them all, in Your time. Amen.',
+  },
+  'Isaiah 53:5': {
+    story: 'Isaiah\'s prophecy of the suffering Servant — written seven centuries early — reads like an eyewitness account of the cross. This verse is its centre: every wound itemised, every wound purposeful.',
+    meaning: '"He was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed" — four exchanges: His wounds, our rebellion; His bruises, our guilt; His punishment, our peace; His stripes, our healing.',
+    you: 'Whatever healing you seek — body, soul, or both — bring it to the One who purchased healing with His own back. Nothing about your brokenness is outside what His wounds addressed.',
+    prayer: 'Wounded Healer, by Your stripes I seek my healing. You paid for my peace — let it flow into this pain. Amen.',
+  },
+  'James 5:14-15': {
+    story: 'James closes his letter with instructions the early church took literally: sickness was not to be endured alone but brought into the praying community, elders and oil and all.',
+    meaning: '"Is any sick among you? let him call for the elders of the church; and let them pray over him... and the prayer of faith shall save the sick, and the Lord shall raise him up" — healing is set inside community and prayer; the power is the Lord\'s, the calling is yours.',
+    you: 'Do not privatise your illness. Telling praying people is not weakness or bother — it is the prescribed step. Call them; let hands be laid and faith be prayed. God works through His gathered people.',
+    prayer: 'Lord, give me humility to call for prayer instead of suffering silently — and raise me up according to Your word. Amen.',
+  },
+  'Jeremiah 17:14': {
+    story: 'Jeremiah — mocked, threatened, and worn down by his calling — prayed many raw prayers. This one is among his simplest, built on a confident play of logic: heal me, and healed I will be.',
+    meaning: '"Heal me, O Lord, and I shall be healed; save me, and I shall be saved: for thou art my praise" — when God does it, it is done thoroughly; His healing does not need a second opinion. "Thou art my praise" — the prayer ends in worship before the answer arrives.',
+    you: 'Pray this verse word-for-word over your situation — it has been a believer\'s healing prayer for 2,600 years. And copy its ending: praise Him as your praise, even mid-symptoms.',
+    prayer: 'Heal me, O Lord, and I shall be healed; save me, and I shall be saved — for You are my praise. Amen.',
+  },
+  'Psalm 103:2-3': {
+    story: 'David opens this psalm commanding his own soul to bless God — then, worried he might forget, starts an inventory of benefits. The first two entries set forgiveness and healing side by side.',
+    meaning: '"Forget not all his benefits: who forgiveth all thine iniquities; who healeth all thine diseases" — both gifts flow from the same character. Whether healing arrives now or in resurrection, it is God\'s nature to heal — He is the source every recovery traces back to.',
+    you: 'Gratitude is medicine for the waiting season. Do what David did: list God\'s benefits — forgiveness first, every past recovery next. A soul rehearsing benefits heals differently than one rehearsing symptoms.',
+    prayer: 'Bless the Lord, O my soul — who forgives all my sin and heals my diseases. I rehearse Your benefits today. Amen.',
+  },
+  'Psalm 30:2': {
+    story: 'David wrote Psalm 30 for the dedication of his house, looking back on a brush with death — sickness or catastrophe so severe he described it as being brought up from the grave. His testimony is one line.',
+    meaning: '"O Lord my God, I cried unto thee, and thou hast healed me" — the entire mechanism is visible: a cry going up, healing coming down. No technique, no merit — a cry and an answer.',
+    you: 'This verse is testimony — proof the cry-and-heal circuit works. Add your cry today; and when your healing comes, in whatever form God gives it, do what David did: write it down and tell it.',
+    prayer: 'O Lord my God, I cry to You — heal me as You healed David. And make my recovery a testimony. Amen.',
+  },
+  'Psalm 41:3': {
+    story: 'David opens Psalm 41 blessing those who care for the weak — then describes how God Himself nurses the sick believer, in one of Scripture\'s most tender domestic images.',
+    meaning: '"The Lord will strengthen him upon the bed of languishing: thou wilt make all his bed in his sickness" — "make his bed" is literal sickroom language: turning, smoothing, remaking the bed of someone too weak to rise. God as bedside nurse.',
+    you: 'In the long, boring, painful hours of illness — the ones visitors never see — God is present in the sickroom, strengthening and smoothing. You are nursed, not abandoned.',
+    prayer: 'Lord, be near my sickbed as You promised — strengthen me on it, tend me through the slow hours, and raise me from it. Amen.',
+  },
+  '1 Peter 2:24': {
+    story: 'Peter — who watched the crucifixion\'s aftermath from a distance and carried the guilt of his denials — writes about the cross with the intensity of an eyewitness made whole.',
+    meaning: '"Who his own self bare our sins in his own body on the tree... by whose stripes ye were healed" — "his own self... his own body": the substitution was intensely personal. The healing is stated as accomplished — purchased in full at the cross.',
+    you: 'Your healing — of sin certainly, of body in God\'s timing and eternity guaranteed — is not a hope Jesus gestured at but a purchase He completed. Live toward it: dead to sins, alive to righteousness.',
+    prayer: 'Lord Jesus, You bore my sins in Your own body. I claim what Your stripes purchased — make me whole, inside and out. Amen.',
+  },
+  'John 14:1': {
+    story: 'Jesus spoke this to men whose world was collapsing — their Master leaving, betrayal in the room, crosses ahead. His first words into their heartbreak were not an explanation but a prescription.',
+    meaning: '"Let not your heart be troubled: ye believe in God, believe also in me" — "let not" implies you have a say: trouble knocks, but you govern the door. The remedy is doubled belief — resting your weight on the Father and the Son together.',
+    you: 'A broken heart feels like weather — uncontrollable. Jesus treats it as a door you can guard. You cannot stop the knocking, but with belief planted in Him, you decide what gets a chair.',
+    prayer: 'Lord Jesus, my heart is troubled and You said it need not be. I believe in God; I believe also in You. Guard the door. Amen.',
+  },
+  'Isaiah 61:1': {
+    story: 'Isaiah foresaw an Anointed One with a specific job description. Seven centuries later, Jesus stood up in the Nazareth synagogue, read this exact passage aloud, and said: today this is fulfilled in your ears.',
+    meaning: '"He hath sent me to bind up the brokenhearted, to proclaim liberty to the captives" — binding the brokenhearted is not a side effect of the Messiah\'s mission; it is clause one of His mandate. Your mended heart is what He was sent for.',
+    you: 'You are not an interruption to Jesus\'s real work — you are the assignment. He was anointed and dispatched specifically for hearts in your condition. Report your break to the One commissioned to bind it.',
+    prayer: 'Anointed Jesus, You were sent for the brokenhearted — that is me. Bind up my heart, and set me free. Amen.',
+  },
+  'Psalm 51:17': {
+    story: 'David, exposed and devastated after his great sin, realised something about worship: God was not interested in the bulls and rituals David could afford as king. What God wanted, David finally had.',
+    meaning: '"The sacrifices of God are a broken spirit: a broken and a contrite heart, O God, thou wilt not despise" — the one offering God never turns away is the shattered heart honestly presented. What feels worthless to you is precious liturgy to Him.',
+    you: 'You think you must repair your heart before offering it. Scripture reverses it: the break *is* the offering. Bring it as-is — He has never once despised a contrite heart, and He will not start with yours.',
+    prayer: 'O God, I have nothing polished to bring — only this broken heart. You said You will not despise it. Receive it. Amen.',
+  },
+};
