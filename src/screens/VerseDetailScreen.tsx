@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Bookmark, Share2, Copy, BookOpen } from 'lucide-react';
+import { Bookmark, Share2, Copy, BookOpen, Landmark, Lightbulb, Heart, MessageCircle } from 'lucide-react';
 import { ScreenHeader } from '../components/ScreenHeader';
 import { useNav } from '../nav';
 import { useStore, type SavedVerse } from '../store';
 import { useToast } from '../components/Toast';
 import { getPassage, type Translation } from '../lib/bible';
+import { getStudy, type StudyNote } from '../lib/studies';
 import { shareVerse, copyText, formatVerse } from '../lib/share';
 import type { VerseLike } from '../components/VerseCard';
 
@@ -23,6 +24,21 @@ export function VerseDetailScreen() {
 
   const hasLocation = !!(verse?.book && verse?.chapter && verse?.verseStart);
   const curatedIsKjv = (verse?.translation || 'KJV') === 'KJV';
+
+  // Study note ("Understand this verse") for this reference, when one exists.
+  // Keyed by reference so stale notes never show for a different verse.
+  const [studyFor, setStudyFor] = useState<{ ref: string; note: StudyNote | null } | null>(null);
+  useEffect(() => {
+    if (!verse?.reference) return;
+    let cancelled = false;
+    getStudy(verse.reference).then((note) => {
+      if (!cancelled) setStudyFor({ ref: verse.reference, note });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [verse?.reference]);
+  const study = studyFor && studyFor.ref === verse?.reference ? studyFor.note : null;
 
   useEffect(() => {
     // The in-hand curated text already covers KJV; only fetch when showing another translation.
@@ -127,6 +143,38 @@ export function VerseDetailScreen() {
         </div>
       )}
 
+      {/* Understand this verse — beginner-friendly study note */}
+      {study && (
+        <div className="mb-6">
+          <h2 className="section-header mb-3">Understand this verse</h2>
+          <div className="space-y-3">
+            <StudyBlock
+              icon={<Landmark className="h-4 w-4" aria-hidden="true" />}
+              title="The story behind it"
+              text={study.story}
+            />
+            <StudyBlock
+              icon={<Lightbulb className="h-4 w-4" aria-hidden="true" />}
+              title="What it means"
+              text={study.meaning}
+            />
+            <StudyBlock
+              icon={<Heart className="h-4 w-4" aria-hidden="true" />}
+              title="For you today"
+              text={study.you}
+            />
+            <div className="rounded-2xl border-2 border-wayfind-amber/30 bg-wayfind-amber/5 p-5">
+              <p className="caption mb-2 flex items-center gap-1.5 font-semibold uppercase tracking-wide text-wayfind-amber">
+                <MessageCircle className="h-4 w-4" aria-hidden="true" /> Pray it
+              </p>
+              <p className="font-lora italic leading-relaxed text-[var(--ui-text)]" style={{ fontSize: 'var(--verse-size, 19px)' }}>
+                {study.prayer}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Read in context */}
       {hasLocation && (
         <button
@@ -163,6 +211,17 @@ export function VerseDetailScreen() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+function StudyBlock({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
+  return (
+    <div className="wayfind-card">
+      <p className="caption mb-2 flex items-center gap-1.5 font-semibold uppercase tracking-wide">
+        <span className="text-wayfind-amber">{icon}</span> {title}
+      </p>
+      <p className="body-text leading-relaxed">{text}</p>
     </div>
   );
 }

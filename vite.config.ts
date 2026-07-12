@@ -63,6 +63,15 @@ export default defineConfig({
             },
           },
           {
+            // Study notes — refreshed in the background as new notes ship.
+            urlPattern: ({ url }) => url.pathname.includes('/studies/') && url.pathname.endsWith('.json'),
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'wayfind-studies',
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
             urlPattern: ({ url }) => url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com',
             handler: 'StaleWhileRevalidate',
             options: { cacheName: 'wayfind-fonts', cacheableResponse: { statuses: [0, 200] } },
