@@ -1,0 +1,117 @@
+// Study notes — seeking cluster, part B: forgiving, prayerless.
+module.exports = {
+  'Colossians 3:13': {
+    story: 'Paul is describing the wardrobe of a new life in Christ — things to "put on" like clothes. Among kindness and humility he places forgiveness, and gives it a strict measuring standard.',
+    meaning: '"Forbearing one another, and forgiving one another, if any man have a quarrel against any: even as Christ forgave you, so also do ye" — the standard is not how much the person deserves it, but "even as Christ forgave you." You forgive from a full account, not an empty one.',
+    you: 'You cannot squeeze forgiveness out of your own sense of fairness — it runs out fast. Draw it instead from what you have received: measure the wrong done to you against the mountain Christ forgave you, and the math changes.',
+    prayer: 'Lord, I cannot forgive on my own fairness. Remind me how much You forgave me, and let me forgive from that fullness. Amen.',
+  },
+  'Matthew 6:14-15': {
+    story: 'Jesus attached this comment directly to the Lord\'s Prayer — the only line of that prayer He circled back to explain. He tied our experience of forgiveness to our willingness to extend it.',
+    meaning: '"If ye forgive men their trespasses, your heavenly Father will also forgive you: but if ye forgive not... neither will your Father forgive your trespasses" — this is not earning forgiveness by forgiving; it is that a heart clamped shut against others cannot stay open to receive mercy itself.',
+    you: 'Unforgiveness is a closed hand — and a closed hand cannot receive. Jesus is not making God stingy; He is warning that harbouring a grudge blocks the very grace you need. Release, and stay open to being released.',
+    prayer: 'Father, I do not want a grudge to block Your grace in me. Help me forgive, that my hands stay open to Your mercy. Amen.',
+  },
+  'Matthew 18:21-22': {
+    story: 'Peter thought he was being generous — the rabbis taught forgiving three times, and he doubled it and added one. Jesus\'s answer exploded his arithmetic and reframed forgiveness entirely.',
+    meaning: '"I say not unto thee, Until seven times: but, Until seventy times seven" — Jesus is not setting a new ceiling of 490; He is abolishing the counting. Forgiveness that keeps a tally is not forgiveness. He calls for a lifestyle, not a limit.',
+    you: 'If you are counting how many times you have forgiven someone, you have not yet forgiven them — you are keeping a ledger. Jesus invites you off the counting altogether: forgive as a way of living, not a quota to fill.',
+    prayer: 'Lord, take me off the counting. Teach me to forgive not seven times but as a way of life, the way You forgive me. Amen.',
+  },
+  'Mark 11:25': {
+    story: 'Jesus taught this right after cursing a fruitless fig tree and clearing the temple — moments of holy power. Then He connected the power of prayer to something surprisingly relational: a cleared heart toward others.',
+    meaning: '"When ye stand praying, forgive, if ye have ought against any: that your Father also which is in heaven may forgive you your trespasses" — forgiveness and prayer are linked at the moment you stand to pray. An unforgiving heart brings static onto the line.',
+    you: 'If your prayers feel blocked, check the doorway — is there someone you are holding something against? Jesus says forgiveness is part of the posture of prayer. Release them as you approach God, and the line clears.',
+    prayer: 'Father, as I come to pray, I release those I hold something against. Clear my heart, that nothing blocks my prayers. Amen.',
+  },
+  'Luke 23:34': {
+    story: 'These are the first words Jesus spoke from the cross — while soldiers were still nailing Him down and gambling for His clothes. In the middle of the worst injustice in history, He prayed for the perpetrators.',
+    meaning: '"Father, forgive them; for they know not what they do" — Jesus forgave *during* the wrong, not after it healed; and He made a case for His enemies ("they know not") rather than against them. This is forgiveness at its extreme, modeled, not just taught.',
+    you: 'Your hardest act of forgiveness is not harder than the one Jesus performed with nails in His hands. He does not ask you to feel nothing about the wound — He shows you it is possible to release the wrongdoer even while it still hurts.',
+    prayer: 'Jesus, You forgave from the cross while they still hurt You. Give me grace to forgive the one who wronged me, even now. Amen.',
+  },
+  'Luke 6:37': {
+    story: 'In His sermon on the plain, Jesus lists a series of releases — commands that free the one who obeys them as much as the one they are aimed at. Forgiveness comes last, framed by a promise.',
+    meaning: '"Judge not, and ye shall not be judged: condemn not, and ye shall not be condemned: forgive, and ye shall be forgiven" — each phrase is a hand opening: stop judging, stop condemning, start forgiving. The promise attached — "ye shall be forgiven" — describes what flows back to an open heart.',
+    you: 'The person a grudge damages most is the one carrying it. "Forgive, and ye shall be forgiven" is not only about the offender\'s account — it is about the freedom that returns to you when you finally put the stone down.',
+    prayer: 'Lord, I lay down judging, condemning, and grudge-keeping. As I forgive, let me feel Your forgiveness flow back to me. Amen.',
+  },
+  '1 Peter 4:8': {
+    story: 'Peter, writing to scattered and pressured believers, tells them what matters most in a community under strain — and gives love a specific job: covering, not exposing.',
+    meaning: '"Above all things have fervent charity among yourselves: for charity shall cover the multitude of sins" — "fervent" love is stretched-out, strenuous love. To "cover" sins is not to excuse or hide wrongdoing, but to refuse to broadcast and rehearse the faults of others — love overlooks a multitude.',
+    you: 'You have a choice with the offenses of others: expose and rehearse them, or cover them in love. Love does not deny the wrong; it declines to advertise it. Which multitude of small sins could you cover today?',
+    prayer: 'Lord, give me fervent love that covers a multitude of sins — quick to overlook, slow to broadcast the faults of others. Amen.',
+  },
+  'Proverbs 17:9': {
+    story: 'This proverb weighs two ways of handling someone\'s offense against you — one that builds relationships and one that quietly demolishes them, often between people who genuinely care for each other.',
+    meaning: '"He that covereth a transgression seeketh love; but he that repeateth a matter separateth very friends" — to "cover" is to let a matter go; to "repeat" is to keep bringing it up, retelling it. The repeater does not just fail to forgive — he actively drives even close friends apart.',
+    you: 'Forgiveness has a tongue-test: do you keep re-raising the old offense? Every time you rehearse it, you re-open it. Covering it — choosing not to bring it up again — is how you "seek love" and keep the friendship whole.',
+    prayer: 'Lord, keep me from repeating old offenses. Let me cover them and seek love, guarding the friendships I could damage with my words. Amen.',
+  },
+  'Matthew 6:6-8': {
+    story: 'Jesus taught this to people who had seen prayer turned into performance — long, loud, public displays. He pointed them instead to a closet, a closed door, and a Father who is not impressed by volume.',
+    meaning: '"Enter into thy closet, and when thou hast shut thy door, pray to thy Father which is in secret... your Father knoweth what things ye have need of, before ye ask him" — prayer is a private conversation with a Father who already knows, not a speech to inform a distant official. You come to be with Him, not to brief Him.',
+    you: 'If prayer feels like an intimidating performance, Jesus removes the audience. It is a shut door, a Father, and you — and He already knows your needs before you find the words. You cannot pray it wrong when you are simply talking to Someone who loves you.',
+    prayer: 'Father, thank You that prayer is not a performance but a private talk with You. You already know my needs — I just come to be with You. Amen.',
+  },
+  'Romans 8:26': {
+    story: 'Paul, writing about life in a groaning, waiting world, addresses the honest problem every believer hits: sometimes you do not even know how to pray. His answer moves the burden off your shoulders.',
+    meaning: '"Likewise the Spirit also helpeth our infirmities: for we know not what we should pray for as we ought: but the Spirit itself maketh intercession for us with groanings which cannot be uttered" — when your prayers run out of words, the Holy Spirit takes your wordless groans and translates them into perfect prayer before God.',
+    you: 'Not knowing what to pray is not a disqualification — it is exactly the situation this verse is for. When all you can manage is a sigh or a groan, the Spirit Himself carries it up as prayer. You never pray alone.',
+    prayer: 'Holy Spirit, when I do not know what to pray, take my groans and make them prayer. Thank You for praying in me and for me. Amen.',
+  },
+  '1 Thessalonians 5:16-18': {
+    story: 'Paul closes his letter with rapid-fire commands for everyday Christian life. Three of them cluster together into a rhythm — and the middle one sounds impossible until you understand what it means.',
+    meaning: '"Rejoice evermore. Pray without ceasing. In every thing give thanks" — "without ceasing" does not mean never stopping to eat or sleep; it means keeping the line always open, a running conversation with God threaded through the day, returning to Him again and again.',
+    you: 'Prayer is not only a scheduled event — it can be the background hum of your whole day: a thought turned Godward while you work, walk, or worry. "Without ceasing" means you are always allowed to speak to Him, mid-task, mid-sentence.',
+    prayer: 'Lord, teach me to pray without ceasing — to keep the line open all day, turning to You in the ordinary moments. Amen.',
+  },
+  'James 5:16': {
+    story: 'James, writing about sickness and healing in the church, widens the lens to what praying people can do for one another — and stakes a bold claim on the power of an ordinary righteous person\'s prayer.',
+    meaning: '"Pray one for another, that ye may be healed. The effectual fervent prayer of a righteous man availeth much" — "availeth much" means it accomplishes a great deal, gets real results. And "righteous" here is not sinless — it is anyone made right with God through Christ. Your prayers carry weight.',
+    you: 'You may assume powerful prayer belongs to spiritual professionals. James says a right-with-God ordinary believer — you — prays prayers that "avail much." Do not underestimate what your honest, earnest prayers actually move.',
+    prayer: 'Lord, thank You that my prayers avail much because I am made righteous in Christ. Teach me to pray earnestly for others. Amen.',
+  },
+  'Matthew 7:7': {
+    story: 'In the Sermon on the Mount, Jesus gives three verbs that build on each other — a staircase of increasing intensity — to describe how His Father responds to those who keep coming.',
+    meaning: '"Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you" — in the original these are continuous: keep asking, keep seeking, keep knocking. Each verb is more active than the last, and each carries its own guaranteed response.',
+    you: 'Prayer is not a one-time attempt that either works or does not — it is a relationship of persistent asking. Jesus invites you to keep coming, keep seeking, keep knocking, with three promises attached. Persistence is not nagging God; it is trusting Him.',
+    prayer: 'Lord, teach me to keep asking, seeking, and knocking — trusting Your promise to give, to let me find, and to open. Amen.',
+  },
+  'Psalm 145:18': {
+    story: 'David\'s final psalm of pure praise catalogues God\'s greatness and goodness. Near the end he makes a promise about proximity — how near God is to a certain kind of caller.',
+    meaning: '"The Lord is nigh unto all them that call upon him, to all that call upon him in truth" — "nigh" means near, close at hand. The qualifier is not eloquence but sincerity: "in truth" — honest, real calling. God draws near to genuine callers, not polished ones.',
+    you: 'You do not have to shout across a great distance to reach God. He is near to everyone who calls on Him honestly. Drop the performance; call in truth — plainly, sincerely — and He is already close.',
+    prayer: 'Lord, thank You that You are near to all who call on You in truth. I call honestly today — draw near to me. Amen.',
+  },
+  'Jeremiah 29:12': {
+    story: 'God speaks this to His people in Babylonian exile — far from home, feeling forgotten. Inside His promise of a future and a hope sits a specific pledge about what happens when they pray.',
+    meaning: '"Then shall ye call upon me, and ye shall go and pray unto me, and I will hearken unto you" — "hearken" means to listen attentively, to give ear. God does not promise merely to overhear exiled prayers; He promises focused, attentive listening.',
+    you: 'Even when you feel far from God — in your own kind of exile — He guarantees that your prayers land on an attentive ear. You are not talking into empty air; the God of the universe leans in to listen when you call.',
+    prayer: 'Lord, thank You that when I call and pray, You listen attentively. Even here, even now, You hear me. Amen.',
+  },
+  'Luke 11:9-10': {
+    story: 'A disciple asked Jesus, "Lord, teach us to pray." After giving them the Lord\'s Prayer, Jesus told a story about a persistent midnight visitor, then drove home why persistence in prayer is never wasted.',
+    meaning: '"Ask, and it shall be given you... For every one that asketh receiveth; and he that seeketh findeth; and to him that knocketh it shall be opened" — Jesus moves from command to guarantee: "every one" who asks receives. There are no exceptions clause, no favourites — the door opens to all who keep knocking.',
+    you: 'When prayer feels one-sided, hold onto the word "every one." Not the eloquent, not the deserving — every one who asks receives. Your knocking is heard, and the promise leaves nobody out, including you.',
+    prayer: 'Lord, You promised that everyone who asks receives. I keep knocking, trusting the door will open. Strengthen my persistence. Amen.',
+  },
+  'Hebrews 4:16': {
+    story: 'The writer of Hebrews has just described Jesus as a great High Priest who understands our weaknesses because He was tempted as we are. On that basis, he tells us how to approach God — with an unexpected posture.',
+    meaning: '"Let us therefore come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need" — a throne would normally demand trembling, but this one is a "throne of grace," and we come "boldly" — with confidence — because Jesus has opened the way. Mercy and timely help are what we find there.',
+    you: 'You do not have to creep up to God apologetically, hoping not to be noticed. Because of Jesus, you are invited to come *boldly* — with confidence — to a throne of grace, exactly when you need help most.',
+    prayer: 'Lord, thank You that I can come boldly to Your throne of grace. In my time of need, I come for mercy and help now. Amen.',
+  },
+  'John 15:7': {
+    story: 'On the night before the cross, Jesus taught the vine and the branches — a picture of staying connected to Him. Out of that image He made a startling promise about prayer, hinged on one condition.',
+    meaning: '"If ye abide in me, and my words abide in you, ye shall ask what ye will, and it shall be done unto you" — "abide" means to remain, to stay put. The promise is huge, but the condition shapes the asking: when His words live in you, your wishes are increasingly aligned with His, so what you ask becomes what He wants to give.',
+    you: 'This is not a blank cheque for whims — it is the promise that a life staying close to Jesus, soaked in His words, begins to want what He wants, and those prayers get answered. Abide first; the asking will take care of itself.',
+    prayer: 'Lord, help me abide in You and let Your words abide in me, until what I ask is what You long to give. Amen.',
+  },
+  'Psalm 62:8': {
+    story: 'David wrote this while under pressure from enemies plotting his downfall. In the calm centre of the psalm he turns from his troubles to counsel the listening congregation on what to do with a heavy heart.',
+    meaning: '"Trust in him at all times; ye people, pour out your heart before him: God is a refuge for us" — "pour out your heart" is the language of emptying a container completely — holding nothing back. Prayer here is not careful and edited; it is total honesty spilled before a God who is a safe place ("refuge").',
+    you: 'You do not need to tidy your feelings before you pray. God invites you to pour out your heart — the fear, the anger, the mess — because He is a refuge, a safe place to be that honest. Emptying it before Him is exactly the point.',
+    prayer: 'Lord, You are my refuge. I pour out my whole heart before You now — nothing hidden, nothing tidied. Hold it all. Amen.',
+  },
+};

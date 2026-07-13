@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/fetch-kinyarwanda.cjs && node scripts/fetch-hymns.cjs",
+    "prebuild": "node scripts/fetch-kinyarwanda.cjs && node scripts/fetch-hymns.cjs && node scripts/build-studies.cjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

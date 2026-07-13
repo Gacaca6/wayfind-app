@@ -1,0 +1,123 @@
+// Study notes — positive cluster, part B: hopeful, peaceful, courageous.
+module.exports = {
+  'Habakkuk 2:3': {
+    story: 'Habakkuk demanded answers from God about injustice and was told to write the vision down and wait — with a promise about God\'s timetable that has steadied waiting believers ever since.',
+    meaning: '"The vision is yet for an appointed time... though it tarry, wait for it; because it will surely come, it will not tarry" — appointed: the date is fixed in God\'s calendar. "Tarry" to you, on-time to Him — divine delays are never divine denials.',
+    you: 'What God has promised you may be slower than you hoped — it is not slower than He planned. Write the hope down like Habakkuk; dated promises are easier to wait for than vague wishes.',
+    prayer: 'Lord, Your vision has an appointed time. Give me patience for the tarrying — it will surely come. Amen.',
+  },
+  'Lamentations 3:21-23': {
+    story: 'In the middle of the Bible\'s book of grief — written amid Jerusalem\'s ashes — the writer performs a deliberate act: he recalls one specific truth to mind, and hope returns with it.',
+    meaning: '"This I recall to my mind, therefore have I hope. It is of the Lord\'s mercies that we are not consumed... they are new every morning: great is thy faithfulness" — hope here is not a feeling that arrives but a memory that is fetched. Recall produces hope.',
+    you: 'Hope is retrievable. When it drains away, do what he did: deliberately recall — His mercies, His compassions, His track record with you. Fetch the truth; hope follows it home.',
+    prayer: 'Lord, I recall it to mind now: Your mercies never end, new every morning. Therefore I have hope. Great is Your faithfulness. Amen.',
+  },
+  'Romans 5:3-5': {
+    story: 'Paul — whose sufferings filled chapters — dares to say believers "glory" in tribulations. Not because pain is good, but because he had watched what the assembly line of grace does with it.',
+    meaning: '"Tribulation worketh patience; and patience, experience; and experience, hope: and hope maketh not ashamed; because the love of God is shed abroad in our hearts" — each stage manufactures the next, ending in a hope that cannot embarrass you, because God\'s love is already poured in as the deposit.',
+    you: 'Your present tribulation is machinery, not meaninglessness — it is currently producing endurance, then character, then hope. You will not be put to shame for hoping; the love already in your heart is the guarantee.',
+    prayer: 'Father, run Your process in me — turn this trouble into endurance, character, and unashamed hope. Amen.',
+  },
+  'Hebrews 6:19': {
+    story: 'The writer of Hebrews reaches for a sailor\'s image: every ship in a storm throws out an anchor. The believer\'s anchor, he says, is set somewhere no storm has ever reached.',
+    meaning: '"Which hope we have as an anchor of the soul, both sure and stedfast, and which entereth into that within the veil" — the anchor is not dropped down into the sea but up into the sanctuary, behind the veil, where Jesus has entered for us. Anchored to the throne itself.',
+    you: 'Ships drift when anchors drag. Yours cannot — it is fastened inside heaven, held by Jesus. Whatever tosses on the surface of your life, the soul beneath is moored to something sure and steadfast.',
+    prayer: 'Lord Jesus, my anchor holds within the veil — where You are. Steady my soul in this storm; I am moored to You. Amen.',
+  },
+  'Psalm 130:5': {
+    story: 'This psalm begins "out of the depths" — a cry from the bottom. By its middle, the psalmist has taken up the posture that carries a person from the depths to the morning: waiting on a word.',
+    meaning: '"I wait for the Lord, my soul doth wait, and in his word do I hope" — waiting doubled for emphasis, and the hope located precisely: not in outcomes, but "in his word." God\'s promises are the handhold while the depths last.',
+    you: 'Waiting without a word is just enduring; waiting on His word is hoping. Pick one promise — write it where you will see it — and let your waiting hold onto that, more than watchmen for the morning.',
+    prayer: 'Lord, I wait for You — my soul waits — and in Your word I put my hope. Hold me till the morning comes. Amen.',
+  },
+  'Micah 7:7': {
+    story: 'Micah surveys a society in collapse — corrupt judges, treacherous families, no one trustworthy. His response begins with a defiant "Therefore" — a pivot from everything around him to Someone above him.',
+    meaning: '"Therefore I will look unto the Lord; I will wait for the God of my salvation: my God will hear me" — three resolutions: look, wait, and the confidence that closes them — my God *will* hear me. Certainty in the hearing, even before the answer.',
+    you: 'When everything around you disappoints, copy Micah\'s pivot: therefore — because of all that — I will look up instead. Your watching and waiting land on ears guaranteed to hear.',
+    prayer: 'God of my salvation, I turn from the disappointments and look to You. I wait — and I know You will hear me. Amen.',
+  },
+  'Proverbs 23:18': {
+    story: 'This proverb follows a warning against envying sinners. The antidote it offers is a matter of endings — what the last chapter holds for those who fear the Lord.',
+    meaning: '"For surely there is an end; and thine expectation shall not be cut off" — "an end" means an outcome, a future, a sequel. For the faithful, expectation has a guarantee: it will not be severed. The story does not stop where it currently hurts.',
+    you: 'You are mid-story, and mid-story chapters can look grim. But surely — the proverb\'s own word — there is an outcome ahead, and your hope will not be cut off. Judge nothing by the middle.',
+    prayer: 'Lord, surely there is a future — my expectation will not be cut off. I trust You for the chapters I cannot read yet. Amen.',
+  },
+  'Numbers 6:24-26': {
+    story: 'God Himself composed this blessing and commanded Aaron\'s priests to speak it over Israel — putting His own name on the people. For three thousand years it has been spoken over God\'s children, generation after generation.',
+    meaning: '"The Lord bless thee, and keep thee: the Lord make his face shine upon thee... and give thee peace" — six movements ending in shalom: wholeness, wellbeing, rest. A shining face means delighted attention — God looking at you with pleasure.',
+    you: 'Receive this today as spoken over you personally — because through Christ, it is. God\'s face is not turned away from you in disappointment; it shines toward you, and the last word He puts on you is peace.',
+    prayer: 'Lord, bless me and keep me; make Your face shine on me; be gracious to me; lift up Your countenance on me — and give me peace. Amen.',
+  },
+  'Philippians 4:7': {
+    story: 'Paul promises praying believers a guard for the war zone where anxiety fights — not a change of circumstances, but a garrison stationed at the two gates worry enters through.',
+    meaning: '"The peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus" — "keep" is military: to garrison, to stand sentry. Heart (feelings) and mind (thoughts) both get the guard. "Passeth understanding": it works when it makes no sense that you are calm.',
+    you: 'This peace is not explainable — people will ask how you are still standing. Pray as verse 6 says, then expect the sentry: a calm your own logic cannot account for, posted at your heart and mind.',
+    prayer: 'Lord, station Your peace at my heart and mind today — the peace beyond understanding, guarding me in Christ Jesus. Amen.',
+  },
+  'Psalm 23:1-3': {
+    story: 'David the former shepherd describes life under God\'s care using what he knew: sheep only lie down when fully satisfied and safe, and they must be *led* to water still enough to drink.',
+    meaning: '"He maketh me to lie down in green pastures: he leadeth me beside the still waters. He restoreth my soul" — provision (green pastures), peace (still waters), repair (restoreth) — the Shepherd\'s full service. Restore means to bring back what was depleted.',
+    you: 'Your soul gets depleted — that is not failure, it is sheep-hood. Let the Shepherd do His work: accept the rest He makes you take, drink where He leads, and let Him restore what the weeks have drained.',
+    prayer: 'Shepherd, make me lie down — I resist rest. Lead me to still waters and restore my soul today. Amen.',
+  },
+  'Psalm 116:7': {
+    story: 'The psalmist has just been rescued from death and despair. Instead of rushing on, he pauses to talk to his own soul — calling it home like a wandered child, on the strength of the evidence.',
+    meaning: '"Return unto thy rest, O my soul; for the Lord hath dealt bountifully with thee" — the soul has a rest to return to, a home base in God. The argument is the receipt: look how bountifully He has dealt. Restlessness forgets; rest remembers.',
+    you: 'Your soul wanders into worry and needs calling back. Use this verse as the call: "Return to your rest, my soul" — then read it the evidence: list how bountifully He has already dealt with you.',
+    prayer: 'Return to your rest, O my soul — the Lord has dealt bountifully with you. Lord, settle me back into You. Amen.',
+  },
+  'Psalm 119:165': {
+    story: 'Near the end of the Bible\'s longest psalm — a 176-verse love letter to Scripture — comes this observation about the people who love what God has said: they walk through life strangely unshaken.',
+    meaning: '"Great peace have they which love thy law: and nothing shall offend them" — "offend" here means cause to stumble. Loving God\'s Word builds great peace — not thin calm but deep stability that tripwires and provocations cannot topple.',
+    you: 'The most tranquil people you know are usually the most Scripture-soaked — that is this verse working. Peace is a by-product of loving His Word daily. Increase the dose; watch the stumbling decrease.',
+    prayer: 'Lord, grow my love for Your Word — and with it the great peace that keeps me from stumbling. Amen.',
+  },
+  'Isaiah 32:17': {
+    story: 'Isaiah describes what the reign of a righteous king finally produces — a picture pointing to Messiah. The chain he draws connects two things people usually pursue separately: rightness and rest.',
+    meaning: '"And the work of righteousness shall be peace; and the effect of righteousness quietness and assurance for ever" — peace is downstream of righteousness: right relationship with God, right dealing with people. Guilt is loud; righteousness quiets the house.',
+    you: 'Some lost peace is really unfinished business — a wrong to confess, a matter to set right. Do the work of righteousness in that one place, and listen: quietness and assurance follow it in.',
+    prayer: 'Righteous Lord, show me any unright thing disturbing my peace — and give me courage to settle it. Then quiet me forever. Amen.',
+  },
+  '1 Corinthians 16:13': {
+    story: 'Paul ends his long letter to the troubled Corinthian church with four commands fired like a commander\'s final orders — then, remarkably, a fifth that changes the flavour of the first four.',
+    meaning: '"Watch ye, stand fast in the faith, quit you like men, be strong" — alertness, footing, maturity, strength: soldier language. But the very next verse adds: "Let all your things be done with charity" — courage, in Christ\'s army, always wears love.',
+    you: 'Courage is not the absence of gentleness. Stand firm today — in your convictions, your battles, your post — but let everything be done in love. That combination is Christian bravery.',
+    prayer: 'Lord, make me watchful, firm, mature, and strong — and let every strong thing I do be done in love. Amen.',
+  },
+  'Ephesians 6:10': {
+    story: 'Closing his letter from prison, Paul turns to warfare — the armour of God. But before naming a single piece of equipment, he settles the question of where the soldier\'s power comes from.',
+    meaning: '"Finally, my brethren, be strong in the Lord, and in the power of his might" — not strong in yourself, strong *in the Lord*: His might is the power supply you plug into. The armour that follows is His issue, not your manufacture.',
+    you: 'You keep checking your own strength gauge before hard things — wrong gauge. The command is to draw from His. Begin battles by connecting, not by flexing: prayer first, then the fight.',
+    prayer: 'Lord, I am strong only in You. Power me with Your might today — and armour me for what I face. Amen.',
+  },
+  'Psalm 18:32-34': {
+    story: 'In his great song of deliverance, David — the shepherd who became a warrior-king — credits every capability he ever displayed to a divine training program.',
+    meaning: '"It is God that girdeth me with strength... he maketh my feet like hinds\' feet... he teacheth my hands to war" — girded, footed, and trained by God: stability on high places, skill for the battle. God does not just rescue His people; He equips them.',
+    you: 'The challenge in front of you is also a training ground. Ask not only for rescue but for equipping — sure feet for your high places, skilled hands for your battle. He teaches those who enlist.',
+    prayer: 'God my strength, gird me, steady my feet on the heights, and train my hands for what I must face. Amen.',
+  },
+  'Proverbs 28:1': {
+    story: 'This proverb observes two kinds of people under pressure: one runs when no one is even chasing; the other stands like the king of beasts. The difference is not temperament — it is conscience.',
+    meaning: '"The wicked flee when no man pursueth: but the righteous are bold as a lion" — guilt manufactures phantom pursuers; a clear conscience removes them. Boldness, in this proverb, is a moral condition before it is an emotional one.',
+    you: 'Unconfessed things make the whole world feel like a chase. Keep short accounts with God and people, and watch a lion\'s boldness grow where flinching used to live.',
+    prayer: 'Lord, clear my conscience — nothing hidden, nothing owed. Then make me bold as a lion for what You call me to. Amen.',
+  },
+  '1 Chronicles 28:20': {
+    story: 'Aging David commissions his son Solomon for the enormous task of building the temple — a project bigger than the young man\'s experience. The father\'s charge names the fear and outlasts it.',
+    meaning: '"Be strong and of good courage, and do it: fear not, nor be dismayed: for the Lord God, even my God, will be with thee; he will not fail thee, nor forsake thee, until thou hast finished all the work" — presence promised not vaguely, but until completion.',
+    you: 'The assignment that intimidates you comes with a completion clause: He stays with you *until the work is finished*. Do not measure the task against your experience — measure it against His attendance.',
+    prayer: 'Lord God, my God — I take up the work. Stay with me as You promised, until every part of it is finished. Amen.',
+  },
+  'Psalm 138:3': {
+    story: 'David recalls a specific day — a day he cried out and the answer came not as changed circumstances but as changed capacity: courage installed directly into his soul.',
+    meaning: '"In the day when I cried thou answeredst me, and strengthenedst me with strength in my soul" — same-day service: cried, answered, strengthened. The strength arrived on the inside, where courage actually lives.',
+    you: 'Sometimes God answers prayer by changing the situation; often He answers by reinforcing you. Cry out today and expect the second kind too — boldness in the soul is a real, receivable answer.',
+    prayer: 'Lord, I cry out today — answer me, and make me bold with strength in my soul. Amen.',
+  },
+  'Joshua 1:7': {
+    story: 'God\'s commissioning of Joshua repeats "be strong and courageous" three times — but the middle repetition attaches courage to something unexpected: not the battlefield, but the Book.',
+    meaning: '"Only be thou strong and very courageous, that thou mayest observe to do according to all the law... turn not from it to the right hand or to the left, that thou mayest prosper" — the bravest act is unwavering obedience; prosperity follows the path walked without swerving.',
+    you: 'Courage is not only for giants and rivers — it is for obeying God when culture, convenience, or fear pull right and left. Hold the line of His Word today; that is the courage that prospers.',
+    prayer: 'Lord, make me strong and very courageous where it counts most — obeying Your Word without swerving. Amen.',
+  },
+};
