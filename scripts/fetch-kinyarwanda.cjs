@@ -1,100 +1,28 @@
-// FALLBACK downloader for the Kinyarwanda Bible (older BIR edition via Beblia).
-//
-// The CANONICAL Kinyarwanda text for Wayfind is the "Mbere na mbere" edition of
-// Bibiliya Yera (© 2001 Bible Society of Rwanda), extracted from the PDF the
-// Bible Society provided — see scripts/extract-kinyarwanda-pdf.py. When that
-// PDF-derived public/bible/kin.json is present, this script does nothing.
-//
-// Only if kin.json is missing entirely (e.g. a fresh CI build without the PDF)
-// does this fetch the older Beblia BIR edition so the app is not left without
-// Kinyarwanda. The two editions differ in wording (Gen 1:1 "Mu ntangiriro" vs
-// "Mbere na mbere") — prefer regenerating from the PDF.
-//
-// Run: node scripts/fetch-kinyarwanda.cjs
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
-
-const SRC = 'https://raw.githubusercontent.com/Beblia/Holy-Bible-XML-Format/master/KinyarwandaBIRBible.xml';
-const OUT = path.join(__dirname, '..', 'public', 'bible');
-fs.mkdirSync(OUT, { recursive: true });
-
-function get(url) {
-  return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      if (res.statusCode !== 200) return reject(new Error(`HTTP ${res.statusCode}`));
-      let d = '';
-      res.setEncoding('utf8');
-      res.on('data', (c) => (d += c));
-      res.on('end', () => resolve(d));
-    }).on('error', reject);
-  });
-}
-
-function decodeEntities(s) {
-  return s
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'")
-    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(parseInt(n, 10)))
-    .replace(/&#x([0-9a-fA-F]+);/g, (_, n) => String.fromCharCode(parseInt(n, 16)));
-}
-
-// Lightweight, structure-specific XML parse (no dependency). The Beblia format is
-// flat and regular: <book number><chapter number><verse number>text</verse>...
-function parse(xml) {
-  const books = [];
-  let totalV = 0, totalC = 0;
-  const bookRe = /<book number="(\d+)">([\s\S]*?)<\/book>/g;
-  let bm;
-  while ((bm = bookRe.exec(xml))) {
-    const bnum = parseInt(bm[1], 10);
-    const chapters = [];
-    const chRe = /<chapter number="(\d+)">([\s\S]*?)<\/chapter>/g;
-    let cm;
-    while ((cm = chRe.exec(bm[2]))) {
-      const verses = [];
-      const vRe = /<verse number="(\d+)">([\s\S]*?)<\/verse>/g;
-      let vm, maxN = 0;
-      const tmp = {};
-      while ((vm = vRe.exec(cm[2]))) {
-        const n = parseInt(vm[1], 10);
-        tmp[n] = decodeEntities(vm[2]).replace(/\s+/g, ' ').trim();
-        if (n > maxN) maxN = n;
+// Validate the checked-in Kinyarwanda edition. Never silently substitute a
+// different translation when this file is absent. Authorized source refreshes
+// are explicit: python scripts/import-bibiliya.py (stages a reviewed import).
+const fs = require('node:fs');
+const path = require('node:path');
+const file = path.join(__dirname, '..', 'public', 'bible', 'kin.json');
+try {
+  const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+  if (data.t !== 'KIN' || !Array.isArray(data.b) || data.b.length !== 66) throw new Error('Expected 66 Kinyarwanda books');
+  let chapters = 0, verses = 0;
+  for (const [bi, book] of data.b.entries()) {
+    if (!Array.isArray(book) || !book.length) throw new Error('Missing book');
+    for (const [ci, chapter] of book.entries()) {
+      if (!Array.isArray(chapter) || !chapter.length) throw new Error('Missing chapter');
+      for (const [vi, text] of chapter.entries()) {
+        const combined = data.r?.[`${bi}:${ci+1}`]?.some(([start, end]) => vi+1 > start && vi+1 <= end);
+        if (text === '' && combined) { verses++; continue; }
+        if (typeof text !== 'string' || !text.trim()) throw new Error('Missing verse');
+        verses++;
       }
-      // index by verse number (1-based) so it aligns with English versification;
-      // any gap becomes an empty string.
-      for (let i = 1; i <= maxN; i++) verses[i - 1] = tmp[i] || '';
-      chapters[cm ? parseInt(cm[1], 10) - 1 : chapters.length] = verses;
-      totalV += Object.keys(tmp).length;
-      totalC++;
+      chapters++;
     }
-    books[bnum - 1] = chapters;
   }
-  return { books, totalV, totalC };
+  console.log(`Kinyarwanda validated: 66 books, ${chapters} chapters, ${verses} verses.`);
+} catch (error) {
+  console.error(`Kinyarwanda validation failed: ${error.message}. Restore the approved kin.json or complete an authorized import; no alternate edition was downloaded.`);
+  process.exitCode = 1;
 }
-
-const OUT_FILE = path.join(OUT, 'kin.json');
-
-(async () => {
-  // Idempotent: if it's already here (local dev), don't re-download.
-  if (fs.existsSync(OUT_FILE) && fs.statSync(OUT_FILE).size > 1_000_000) {
-    console.log('Kinyarwanda kin.json already present — skipping download.');
-    return;
-  }
-  process.stdout.write('Fetching Kinyarwanda (BIR) ... ');
-  const xml = await get(SRC);
-  console.log(`${(xml.length / 1024 / 1024).toFixed(1)} MB`);
-  const { books, totalV, totalC } = parse(xml);
-  const out = { t: 'KIN', b: books };
-  fs.writeFileSync(OUT_FILE, JSON.stringify(out));
-  const kb = (fs.statSync(OUT_FILE).size / 1024).toFixed(0);
-  console.log(`KIN: ${books.length} books, ${totalC} chapters, ${totalV} verses -> ${kb} KB`);
-})().catch((e) => {
-  // Never fail the build over the optional Kinyarwanda text — the app still works
-  // in English-only if this can't be fetched (e.g. no network during CI build).
-  console.warn('WARN: could not fetch Kinyarwanda text (app will show English only):', e.message);
-  process.exit(0);
-});

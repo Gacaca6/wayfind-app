@@ -1,3 +1,15 @@
+# Current source status
+
+On 2026-10-06 the project owner confirmed in chat that they have permission or a
+licensed copy for full-text reuse from Bibiliya.com. The app now uses that source.
+This records the owner's statement, not an independently verified license grant.
+The source manifest is `public/bible/kin.source.json`; keep the permission document
+with the project records. No outreach was sent by Codex.
+
+The older request below is retained as historical context for the prior corpus.
+
+---
+
 # Kinyarwanda text — permission request (draft)
 
 **Status:** the Kinyarwanda text currently bundled in Wayfind is the **BIR — Bibiliya Yera, © Bible Society of Rwanda (2001)**, obtained via the Beblia public XML repository. Beblia re-hosts it with a blanket "use freely" note, but Beblia is **not** the rights holder, so that note is not a valid license. This text is included at the project owner's informed decision for a free, non-commercial Scripture app. To put it on a proper footing, send the request below to the Bible Society of Rwanda and keep their written reply on file.

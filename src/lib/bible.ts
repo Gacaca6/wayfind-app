@@ -3,11 +3,9 @@
 // disk), so the app shell stays light and everything works offline after first load.
 import { bookIndexByName, books } from '../data/books';
 
-// Three full versions: KJV and WEB (English, public domain) and KIN — the
-// Kinyarwanda Bibiliya Yera (© 2001 Bible Society of Rwanda), extracted from
-// the PDF provided by the Bible Society. KIN keeps its printed structure,
-// which differs slightly from KJV/WEB in parts of the OT (e.g. Joel has 4
-// chapters, Malachi 3), so chapter counts must come from the translation data.
+// KIN is the Bibiliya Yera text imported from Bibiliya.com with user-confirmed
+// permission. The source manifest records the import date, hash and book counts.
+// Chapter counts come from the selected translation, not another edition.
 export type Translation = 'KJV' | 'WEB' | 'KIN';
 
 export const TRANSLATIONS: { id: Translation; label: string; description: string }[] = [
@@ -18,6 +16,7 @@ export const TRANSLATIONS: { id: Translation; label: string; description: string
 
 interface BibleData {
   t: string;
+  r?: Record<string, [number, number][]>;
   b: string[][][]; // [bookIndex][chapterIndex][verseIndex] -> verse text
 }
 
@@ -25,9 +24,18 @@ const cache: Partial<Record<Translation, BibleData>> = {};
 const inflight: Partial<Record<Translation, Promise<BibleData>>> = {};
 
 // Vite serves /public at the app base. import.meta.env.BASE_URL handles sub-paths.
+// First 16 hex of the committed kin.json SHA-256 (Bibiliya.com snapshot
+// 2026-10-07). Used to cache-bust KIN so the CacheFirst service worker cannot
+// keep serving a previous edition. vite.config may override this via
+// VITE_KIN_REVISION (computed from the file at build time); the literal fallback
+// keeps the loader correct even when that define is absent.
+const KIN_REVISION = '84d32e1b06fa527c';
+
 function url(t: Translation): string {
   const base = import.meta.env.BASE_URL || '/';
-  return `${base}bible/${t.toLowerCase()}.json`.replace(/\/\//g, '/');
+  const resource = `${base}bible/${t.toLowerCase()}.json`.replace(/\/\//g, '/');
+  const rev = import.meta.env.VITE_KIN_REVISION || KIN_REVISION;
+  return t === 'KIN' ? `${resource}?v=${rev}` : resource;
 }
 
 export async function loadTranslation(t: Translation): Promise<BibleData> {
@@ -72,12 +80,9 @@ export async function getPassage(
   verseStart: number,
   verseEnd: number
 ): Promise<string> {
-  const ch = await getChapter(t, bookName, chapter);
-  const parts: string[] = [];
-  for (let v = verseStart; v <= verseEnd; v++) {
-    if (ch[v - 1] !== undefined) parts.push(ch[v - 1]);
-  }
-  return parts.join(' ');
+  await loadTranslation(t);
+  return getPassageSync(t, bookName, chapter, verseStart, verseEnd) || '';
+
 }
 
 // Chapter counts per book for a translation (KIN's printed structure differs
@@ -108,10 +113,18 @@ export function getPassageSync(
   if (!ch) return null;
   const parts: string[] = [];
   for (let v = verseStart; v <= verseEnd; v++) {
+    const span = verseSpan(t, bookName, chapter, v);
+    if (span[0] < verseStart && v === verseStart && ch[span[0] - 1]) parts.push(ch[span[0] - 1]);
     if (ch[v - 1]) parts.push(ch[v - 1]);
   }
   const s = parts.join(' ').trim();
   return s || null;
+}
+
+// Combined source verses share one text; selecting either number includes it.
+export function verseSpan(t: Translation, book: string, chapter: number, verse: number): [number, number] {
+  const bi = bookIndexByName[book];
+  return cache[t]?.r?.[`${bi}:${chapter}`]?.find(([start, end]) => verse >= start && verse <= end) || [verse, verse];
 }
 
 export function formatReference(bookName: string, chapter: number, vStart: number, vEnd: number): string {

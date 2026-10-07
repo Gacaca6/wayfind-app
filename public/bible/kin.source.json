@@ -1,0 +1,408 @@
+{
+  "source": "https://bibiliya.com",
+  "retrievedAt": "2026-10-07T04:54:47Z",
+  "sha256": "84d32e1b06fa527c9dfda29e90ad4362ddb643f049008dd7ac8186a7cce1b244",
+  "totals": {
+    "books": 66,
+    "chapters": 1189,
+    "verses": 31144
+  },
+  "books": [
+    {
+      "name": "Genesis",
+      "slug": "itangiriro",
+      "chapters": 50,
+      "verses": 1533
+    },
+    {
+      "name": "Exodus",
+      "slug": "kuva",
+      "chapters": 40,
+      "verses": 1211
+    },
+    {
+      "name": "Leviticus",
+      "slug": "abalewi",
+      "chapters": 27,
+      "verses": 859
+    },
+    {
+      "name": "Numbers",
+      "slug": "kubara",
+      "chapters": 36,
+      "verses": 1288
+    },
+    {
+      "name": "Deuteronomy",
+      "slug": "gutegeka_kwa_kabiri",
+      "chapters": 34,
+      "verses": 959
+    },
+    {
+      "name": "Joshua",
+      "slug": "yosuwa",
+      "chapters": 24,
+      "verses": 658
+    },
+    {
+      "name": "Judges",
+      "slug": "abacamanza",
+      "chapters": 21,
+      "verses": 618
+    },
+    {
+      "name": "Ruth",
+      "slug": "rusi",
+      "chapters": 4,
+      "verses": 85
+    },
+    {
+      "name": "1 Samuel",
+      "slug": "1_samweli",
+      "chapters": 31,
+      "verses": 811
+    },
+    {
+      "name": "2 Samuel",
+      "slug": "2_samweli",
+      "chapters": 24,
+      "verses": 695
+    },
+    {
+      "name": "1 Kings",
+      "slug": "1_abami",
+      "chapters": 22,
+      "verses": 817
+    },
+    {
+      "name": "2 Kings",
+      "slug": "2_abami",
+      "chapters": 25,
+      "verses": 719
+    },
+    {
+      "name": "1 Chronicles",
+      "slug": "1_ibyo_ku_ngoma",
+      "chapters": 29,
+      "verses": 943
+    },
+    {
+      "name": "2 Chronicles",
+      "slug": "2_ibyo_ku_ngoma",
+      "chapters": 36,
+      "verses": 822
+    },
+    {
+      "name": "Ezra",
+      "slug": "ezira",
+      "chapters": 10,
+      "verses": 279
+    },
+    {
+      "name": "Nehemiah",
+      "slug": "nehemiya",
+      "chapters": 13,
+      "verses": 406
+    },
+    {
+      "name": "Esther",
+      "slug": "esiteri",
+      "chapters": 10,
+      "verses": 167
+    },
+    {
+      "name": "Job",
+      "slug": "yobu",
+      "chapters": 42,
+      "verses": 1069
+    },
+    {
+      "name": "Psalms",
+      "slug": "zaburi",
+      "chapters": 150,
+      "verses": 2526
+    },
+    {
+      "name": "Proverbs",
+      "slug": "imigani",
+      "chapters": 31,
+      "verses": 915
+    },
+    {
+      "name": "Ecclesiastes",
+      "slug": "umubwiriza",
+      "chapters": 12,
+      "verses": 221
+    },
+    {
+      "name": "Song of Songs",
+      "slug": "indirimbo",
+      "chapters": 8,
+      "verses": 117
+    },
+    {
+      "name": "Isaiah",
+      "slug": "yesaya",
+      "chapters": 66,
+      "verses": 1284
+    },
+    {
+      "name": "Jeremiah",
+      "slug": "yeremiya",
+      "chapters": 52,
+      "verses": 1360
+    },
+    {
+      "name": "Lamentations",
+      "slug": "amaganya",
+      "chapters": 5,
+      "verses": 154
+    },
+    {
+      "name": "Ezekiel",
+      "slug": "ezekiyeli",
+      "chapters": 48,
+      "verses": 1271
+    },
+    {
+      "name": "Daniel",
+      "slug": "daniyeli",
+      "chapters": 12,
+      "verses": 357
+    },
+    {
+      "name": "Hosea",
+      "slug": "hoseya",
+      "chapters": 14,
+      "verses": 195
+    },
+    {
+      "name": "Joel",
+      "slug": "yoweli",
+      "chapters": 4,
+      "verses": 73
+    },
+    {
+      "name": "Amos",
+      "slug": "amosi",
+      "chapters": 9,
+      "verses": 146
+    },
+    {
+      "name": "Obadiah",
+      "slug": "obadiya",
+      "chapters": 1,
+      "verses": 21
+    },
+    {
+      "name": "Jonah",
+      "slug": "yona",
+      "chapters": 4,
+      "verses": 48
+    },
+    {
+      "name": "Micah",
+      "slug": "mika",
+      "chapters": 7,
+      "verses": 104
+    },
+    {
+      "name": "Nahum",
+      "slug": "nahumu",
+      "chapters": 3,
+      "verses": 47
+    },
+    {
+      "name": "Habakkuk",
+      "slug": "habakuki",
+      "chapters": 3,
+      "verses": 56
+    },
+    {
+      "name": "Zephaniah",
+      "slug": "zefaniya",
+      "chapters": 3,
+      "verses": 53
+    },
+    {
+      "name": "Haggai",
+      "slug": "hagayi",
+      "chapters": 2,
+      "verses": 38
+    },
+    {
+      "name": "Zechariah",
+      "slug": "zekariya",
+      "chapters": 14,
+      "verses": 211
+    },
+    {
+      "name": "Malachi",
+      "slug": "malaki",
+      "chapters": 3,
+      "verses": 55
+    },
+    {
+      "name": "Matthew",
+      "slug": "matayo",
+      "chapters": 28,
+      "verses": 1071
+    },
+    {
+      "name": "Mark",
+      "slug": "mariko",
+      "chapters": 16,
+      "verses": 678
+    },
+    {
+      "name": "Luke",
+      "slug": "luka",
+      "chapters": 24,
+      "verses": 1151
+    },
+    {
+      "name": "John",
+      "slug": "yohana",
+      "chapters": 21,
+      "verses": 878
+    },
+    {
+      "name": "Acts",
+      "slug": "ibyakozwe_n_intumwa",
+      "chapters": 28,
+      "verses": 1007
+    },
+    {
+      "name": "Romans",
+      "slug": "abaroma",
+      "chapters": 16,
+      "verses": 431
+    },
+    {
+      "name": "1 Corinthians",
+      "slug": "1_abakorinto",
+      "chapters": 16,
+      "verses": 437
+    },
+    {
+      "name": "2 Corinthians",
+      "slug": "2_abakorinto",
+      "chapters": 13,
+      "verses": 256
+    },
+    {
+      "name": "Galatians",
+      "slug": "abagalatiya",
+      "chapters": 6,
+      "verses": 149
+    },
+    {
+      "name": "Ephesians",
+      "slug": "abefeso",
+      "chapters": 6,
+      "verses": 155
+    },
+    {
+      "name": "Philippians",
+      "slug": "abafilipi",
+      "chapters": 4,
+      "verses": 103
+    },
+    {
+      "name": "Colossians",
+      "slug": "abakolosayi",
+      "chapters": 4,
+      "verses": 95
+    },
+    {
+      "name": "1 Thessalonians",
+      "slug": "1_abatesalonike",
+      "chapters": 5,
+      "verses": 89
+    },
+    {
+      "name": "2 Thessalonians",
+      "slug": "2_abatesalonike",
+      "chapters": 3,
+      "verses": 47
+    },
+    {
+      "name": "1 Timothy",
+      "slug": "1_timoteyo",
+      "chapters": 6,
+      "verses": 113
+    },
+    {
+      "name": "2 Timothy",
+      "slug": "2_timoteyo",
+      "chapters": 4,
+      "verses": 83
+    },
+    {
+      "name": "Titus",
+      "slug": "tito",
+      "chapters": 3,
+      "verses": 46
+    },
+    {
+      "name": "Philemon",
+      "slug": "filemoni",
+      "chapters": 1,
+      "verses": 25
+    },
+    {
+      "name": "Hebrews",
+      "slug": "abaheburayo",
+      "chapters": 13,
+      "verses": 303
+    },
+    {
+      "name": "James",
+      "slug": "yakobo",
+      "chapters": 5,
+      "verses": 108
+    },
+    {
+      "name": "1 Peter",
+      "slug": "1_petero",
+      "chapters": 5,
+      "verses": 105
+    },
+    {
+      "name": "2 Peter",
+      "slug": "2_petero",
+      "chapters": 3,
+      "verses": 61
+    },
+    {
+      "name": "1 John",
+      "slug": "1_yohana",
+      "chapters": 5,
+      "verses": 105
+    },
+    {
+      "name": "2 John",
+      "slug": "2_yohana",
+      "chapters": 1,
+      "verses": 13
+    },
+    {
+      "name": "3 John",
+      "slug": "3_yohana",
+      "chapters": 1,
+      "verses": 15
+    },
+    {
+      "name": "Jude",
+      "slug": "yuda",
+      "chapters": 1,
+      "verses": 25
+    },
+    {
+      "name": "Revelation",
+      "slug": "ibyahishuwe",
+      "chapters": 22,
+      "verses": 404
+    }
+  ]
+}

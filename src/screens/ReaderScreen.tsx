@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, ChevronDown, Bookmark, Share2, Copy, X } from 'lucide-react';
 import { books, bookIndexByName } from '../data/books';
-import { getChapter, getChapterCounts, TRANSLATIONS, type Translation } from '../lib/bible';
+import { getChapter, getChapterCounts, verseSpan, TRANSLATIONS, type Translation } from '../lib/bible';
 import { useStore, type SavedVerse } from '../store';
 import { useNav } from '../nav';
 import { useToast } from '../components/Toast';
@@ -97,7 +97,10 @@ export function ReaderScreen() {
     setLoc({ book: books[bi].name, chapter: ch });
   };
 
-  const verseRef = (v: number) => `${loc.book} ${loc.chapter}:${v}`;
+  const verseRef = (v: number) => {
+    const [start, end] = verseSpan(translation, loc.book, loc.chapter, v);
+    return `${loc.book} ${loc.chapter}:${start}${end > start ? `-${end}` : ''}`;
+  };
   const selectedText = selected ? verses[selected - 1] : '';
 
   const saveSelected = () => {
@@ -110,7 +113,7 @@ export function ReaderScreen() {
       book: loc.book,
       chapter: loc.chapter,
       verseStart: selected,
-      verseEnd: selected,
+      verseEnd: verseSpan(translation, loc.book, loc.chapter, selected)[1],
     };
     const already = isSaved(sv.reference);
     toggleSave(sv);
@@ -171,7 +174,8 @@ export function ReaderScreen() {
             // Combined ranges in the printed Kinyarwanda edition (e.g. Rom 9:11-13)
             // leave follow-on verse slots empty — skip rendering those numbers.
             if (!t) return null;
-            const isHi = highlightVerse.current === v;
+            const span = verseSpan(translation, loc.book, loc.chapter, v);
+            const isHi = highlightVerse.current !== null && highlightVerse.current >= span[0] && highlightVerse.current <= span[1];
             return (
               <p
                 key={v}
@@ -181,7 +185,7 @@ export function ReaderScreen() {
                   selected === v ? 'bg-wayfind-amber/15' : isHi ? 'bg-wayfind-amber/10' : ''
                 }`}
               >
-                <sup className="mr-1 font-dmsans text-xs font-semibold text-wayfind-amber">{v}</sup>
+                <sup className="mr-1 font-dmsans text-xs font-semibold text-wayfind-amber">{span[1] > v ? `${v}-${span[1]}` : v}</sup>
                 <span
                   className="font-lora text-[var(--ui-text)]"
                   style={{ fontSize: 'var(--verse-size, 19px)', lineHeight: 1.7 }}
