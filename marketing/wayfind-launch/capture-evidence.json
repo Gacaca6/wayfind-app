@@ -5,47 +5,72 @@
     {
       "id": "daily",
       "url": "https://app.wayfind.workers.dev/",
-      "heading": "Good evening"
+      "heading": "Good evening",
+      "target": null
     },
     {
       "id": "feel-entry",
       "url": "https://app.wayfind.workers.dev/",
-      "heading": "How are you feeling?"
+      "heading": "How are you feeling?",
+      "target": null
+    },
+    {
+      "id": "feel-query",
+      "url": "https://app.wayfind.workers.dev/",
+      "heading": "How are you feeling?",
+      "target": {
+        "x": 344,
+        "y": 165.5,
+        "width": 36,
+        "height": 36
+      }
     },
     {
       "id": "feel",
       "url": "https://app.wayfind.workers.dev/",
-      "heading": "Anxious"
+      "heading": "Anxious",
+      "target": null
     },
     {
       "id": "niv",
       "url": "https://app.wayfind.workers.dev/",
-      "heading": "John 1"
+      "heading": "John 1",
+      "target": null
     },
     {
       "id": "kinyarwanda",
       "url": "https://app.wayfind.workers.dev/",
-      "heading": "John 1"
+      "heading": "John 1",
+      "target": null
     },
     {
       "id": "fellowship",
       "url": "https://app.wayfind.workers.dev/",
-      "heading": "Chats"
+      "heading": "Chats",
+      "target": null
     },
     {
       "id": "chat",
       "url": "https://app.wayfind.workers.dev/",
-      "heading": "Prayer Wall"
+      "heading": "Prayer Wall",
+      "target": null
     },
     {
       "id": "share",
       "url": "https://app.wayfind.workers.dev/",
-      "heading": "Prayer Wall"
+      "heading": "Prayer Wall",
+      "target": {
+        "x": 35,
+        "y": 537.5,
+        "width": 248,
+        "height": 65
+      }
     },
     {
       "id": "verse-preview",
       "url": "https://app.wayfind.workers.dev/",
-      "heading": "Prayer Wall"
+      "heading": "Prayer Wall",
+      "target": null
     }
   ]
 }
