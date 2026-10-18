@@ -1,0 +1,51 @@
+{
+  "base": "https://app.wayfind.workers.dev",
+  "method": "Genuine browser screenshots of the deployed PWA. No native app-store capture or fabricated customer data.",
+  "screens": [
+    {
+      "id": "daily",
+      "url": "https://app.wayfind.workers.dev/",
+      "heading": "Good evening"
+    },
+    {
+      "id": "feel-entry",
+      "url": "https://app.wayfind.workers.dev/",
+      "heading": "How are you feeling?"
+    },
+    {
+      "id": "feel",
+      "url": "https://app.wayfind.workers.dev/",
+      "heading": "Anxious"
+    },
+    {
+      "id": "niv",
+      "url": "https://app.wayfind.workers.dev/",
+      "heading": "John 1"
+    },
+    {
+      "id": "kinyarwanda",
+      "url": "https://app.wayfind.workers.dev/",
+      "heading": "John 1"
+    },
+    {
+      "id": "fellowship",
+      "url": "https://app.wayfind.workers.dev/",
+      "heading": "Chats"
+    },
+    {
+      "id": "chat",
+      "url": "https://app.wayfind.workers.dev/",
+      "heading": "Prayer Wall"
+    },
+    {
+      "id": "share",
+      "url": "https://app.wayfind.workers.dev/",
+      "heading": "Prayer Wall"
+    },
+    {
+      "id": "verse-preview",
+      "url": "https://app.wayfind.workers.dev/",
+      "heading": "Prayer Wall"
+    }
+  ]
+}
