@@ -1,0 +1,16 @@
+{
+  "width": 1080,
+  "height": 1920,
+  "seconds": 20,
+  "fps": "30/1",
+  "frames": 600,
+  "audioCodec": "aac",
+  "audioPeakDb": -8,
+  "posterAtSeconds": 1.5,
+  "posterBakedAsFrameZero": true,
+  "hyperframesContrastEnabled": true,
+  "checksums": {
+    "brag.mp4": "56c020e5a0a9a400a0ded5f390246ebd09c6c7e609a1b7840ebd62486c3d3ee3",
+    "brag.jpg": "9bb5ccb1035679695a9cc3e62f9e829bdbe87e0dc8e168cfd67748def3d5bdc3"
+  }
+}
