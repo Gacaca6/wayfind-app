@@ -2,9 +2,7 @@
 import {mkdir,readFile,writeFile,readdir} from 'node:fs/promises';
 import {createRequire} from 'node:module';
 import path from 'node:path';
-import {loadConfig} from './node_modules/goldie/dist/config.js';
-import {DEVICES} from './node_modules/goldie/dist/specs.js';
-import {renderScreenshots} from './node_modules/goldie/dist/render.js';
+import {loadConfig,DEVICES,renderScreenshots} from 'goldie';
 const require=createRequire(path.resolve('node_modules/goldie/package.json'));
 const {createCanvas,loadImage,GlobalFonts}=require('@napi-rs/canvas');
 GlobalFonts.registerFromPath('composition/assets/dm-sans.ttf','DM Sans');
