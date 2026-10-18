@@ -20,6 +20,8 @@ jobs:
         with:
           node-version: '22'
       - run: npm install --no-audit --no-fund
+      - name: Install media tools on GitHub only
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - run: npx playwright install --with-deps chromium
       - run: npx hyperframes usage --json > harness-usage.json || true
       - run: npx hyperframes catalog --query 'headline reveal and product phone entrance' --json > catalog-results.json

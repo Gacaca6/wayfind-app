@@ -8,7 +8,7 @@ await mkdir('composition/assets',{recursive:true});
 const browser=await chromium.launch({headless:true});
 const context=await browser.newContext({viewport:{width:412,height:919},deviceScaleFactor:2,locale:'en-US',timezoneId:'Africa/Kigali'});
 const page=await context.newPage();
-page.setDefaultTimeout(30000);
+page.setDefaultTimeout(60000);
 const shots=[];
 const evidence=[];
 async function shot(id){await page.waitForTimeout(600);await page.evaluate(()=>document.fonts.ready);const file=path.join(raw,`${id}.png`);await page.screenshot({path:file});await page.screenshot({path:`composition/assets/${id}.png`});shots.push({sceneId:id,file});evidence.push({id,url:page.url(),heading:await page.locator('h1').first().textContent()});}
@@ -22,6 +22,9 @@ await page.getByRole('textbox',{name:'Describe how you feel'}).fill('anxious');
 await page.getByRole('button',{name:'Search',exact:true}).click();
 await shot('feel');
 await page.getByRole('button',{name:'Bible',exact:true}).click();
+await page.getByRole('button',{name:'NIV',exact:true}).click();
+await page.locator('.reading[lang="en"] p').first().waitFor();
+await shot('niv');
 await page.getByRole('button',{name:'KIN',exact:true}).click();
 await page.locator('.reading[lang="rw"] p').first().waitFor();
 await shot('kinyarwanda');
