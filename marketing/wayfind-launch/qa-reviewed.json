@@ -1,0 +1,12 @@
+{
+  "compositionSha256": "b906358cf8679349d5360a70a9379eb5442e05b60ed543cd1495192870e3d17b",
+  "reviewer": "Codex visual QA",
+  "reviewedFramesSeconds": [
+    1.5,
+    5.7,
+    10.2,
+    15.8,
+    18.7
+  ],
+  "review": "Inspected settled product, reading, sharing and CTA frames. Checked real UI, legible copy, unclipped phone screens, source attribution and branded feed graphics. Hyperframes gate passed with contrast enabled."
+}
