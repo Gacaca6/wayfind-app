@@ -1,8 +1,5 @@
 name: Wayfind campaign graphics
 on:
-  push:
-    branches: ['marketing/wayfind-launch-2026-10-18']
-    paths: ['marketing/wayfind-launch/capture.mjs', 'marketing/wayfind-launch/goldie.config.mjs', 'marketing/wayfind-launch/package.json', '.github/workflows/wayfind-marketing.yml']
   workflow_dispatch:
 permissions:
   contents: write

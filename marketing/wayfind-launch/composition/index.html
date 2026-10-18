@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=1080, height=1920">
+<title>Wayfind — Find a verse. Share the encouragement.</title>
+<script src="vendor/gsap.min.js"></script>
+<script src="assets/audio-data.js"></script>
+<script src="assets/ui-targets.js"></script>
+<style>
+@font-face{font-family:'DM Sans';src:url('assets/dm-sans.ttf') format('truetype');font-weight:100 900}
+@font-face{font-family:'Lora';src:url('assets/lora.ttf') format('truetype');font-weight:400 700}
+*{box-sizing:border-box}body{margin:0;background:#FAF7F2;color:#2C1A0E;font-family:'DM Sans',sans-serif}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#FAF7F2}
+.clip{position:absolute;inset:0}.wash{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 64%,#E6B67D 0%,#FAF7F2 67%);opacity:.25}
+.brand{position:absolute;left:92px;top:82px;display:flex;align-items:center;gap:18px;font-size:31px;font-weight:700;letter-spacing:1px}.brand img{width:56px;height:56px;border-radius:16px;object-fit:cover}
+.copy{position:absolute;left:92px;top:178px;width:896px}.eyebrow{font-size:27px;letter-spacing:5px;text-transform:uppercase;font-weight:700;color:#5C3D2E;margin:0 0 21px}
+h1,h2{font-family:'Lora',serif;font-weight:500;font-size:88px;line-height:1.13;letter-spacing:-3px;margin:0;max-width:896px}.support{font-size:35px;line-height:1.4;color:#5C3D2E;margin:24px 0 0}
+.phone-slot{position:absolute;left:268px;top:526px;width:544px;height:1220px}.phone{position:relative;width:100%;height:100%;padding:8px;border-radius:47px;background:#2C1A0E;box-shadow:0 28px 58px #2C1A0E22;overflow:hidden}.screen{position:relative;width:528px;height:1178px;border-radius:39px;overflow:hidden;background:#FAF7F2}.screen img{display:block;width:100%;height:100%;object-fit:contain}.screen-layer{position:absolute;inset:0}.foot{position:absolute;left:92px;top:1790px;font-size:27px;color:#5C3D2E;letter-spacing:1px}
+.tap{position:absolute;width:60px;height:60px;border:4px solid #8D521F;border-radius:50%;background:#FAF7F280;z-index:5;pointer-events:none}.tap-find{left:706px;top:1290px}.tap-share{left:307px;top:1520px}
+.outro{position:absolute;inset:0;display:flex;align-items:center;flex-direction:column;padding-top:350px}.outro-logo{width:256px;height:256px;border-radius:66px;object-fit:cover;box-shadow:0 20px 55px #2C1A0E15}.wordmark{font-family:'Lora',serif;font-size:134px;letter-spacing:-5px;margin:57px 0 0}.outro-line{font-size:43px;margin:35px 0 0;color:#5C3D2E}.url{font-size:49px;font-weight:700;margin:82px 0 0;letter-spacing:-1px}.invite{font-size:30px;margin:26px 0 0;color:#5C3D2E}.credit{position:absolute;left:92px;right:92px;top:1650px;font-size:25px;line-height:1.6;text-align:center;color:#5C3D2E}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="wayfind" data-width="1080" data-height="1920" data-duration="20">
+  <div id="warmth" class="wash" data-layout-ignore></div>
+  <div id="brand" class="brand"><img src="assets/logo.jpeg" alt="">WAYFIND</div>
+  <section id="hook" class="clip" data-start="0" data-duration="3" data-track-index="1">
+    <div class="copy" id="hook-copy"><p class="eyebrow">Scripture for your day</p><h1>A verse for what you feel.</h1><p class="support">Start where you are.</p></div>
+    <div class="phone-slot"><div id="hook-phone" class="phone"><div class="screen"><img src="assets/feel-entry.png" alt="Wayfind feeling search"></div></div></div>
+  </section>
+  <section id="find" class="clip" data-start="3" data-duration="5.05" data-track-index="1">
+    <div class="copy" id="find-copy"><p class="eyebrow">Find Scripture</p><h2>Start with how you feel.</h2><p class="support">A word for an anxious moment.</p></div>
+    <div class="phone-slot"><div id="find-phone" class="phone"><div class="screen"><img id="find-entry" src="assets/feel-query.png" alt="Searching for an anxious feeling"><div id="find-result" class="screen-layer"><img src="assets/feel.png" alt="Actual Scripture search results"></div></div></div></div>
+    <div id="find-tap" class="tap tap-find" data-layout-ignore></div>
+  </section>
+  <section id="read" class="clip" data-start="8.05" data-duration="4.5" data-track-index="1">
+    <div class="copy" id="read-copy"><p class="eyebrow">Read in your language</p><h2>Read in Kinyarwanda.</h2><p class="support">NIV and KJV in English, too.</p></div>
+    <div class="phone-slot"><div id="read-phone" class="phone"><div class="screen"><img src="assets/kinyarwanda.png" alt="The actual Kinyarwanda Bible reader"></div></div></div>
+  </section>
+  <section id="share" class="clip" data-start="12.55" data-duration="4.45" data-track-index="1">
+    <div class="copy" id="share-copy"><p class="eyebrow">Fellowship</p><h2>Share the encouragement.</h2><p class="support">A verse. A Bible photo. A conversation.</p></div>
+    <div class="phone-slot"><div id="share-phone" class="phone"><div class="screen"><img id="share-menu" src="assets/share.png" alt="The actual + attachment menu"><div id="share-draft" class="screen-layer"><img src="assets/verse-preview.png" alt="An attached verse draft, not a sent message"></div></div></div></div>
+    <div id="share-tap" class="tap tap-share" data-layout-ignore></div>
+  </section>
+  <section id="close" class="clip" data-start="17" data-duration="3" data-track-index="1">
+    <div id="close-inner" class="outro"><img class="outro-logo" src="assets/logo.jpeg" alt="Wayfind"><p class="wordmark">Wayfind</p><p class="outro-line">Read. Share. Grow together.</p><p class="url">app.wayfind.workers.dev</p><p class="invite">Open the app. Find your first verse.</p></div>
+    <p class="credit">Music: Sascha Ende · ende.app · CC BY 4.0</p>
+  </section>
+  <audio id="music" src="assets/music.mp3" data-start="0" data-duration="20" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.3,"v":0.3},{"t":18.7,"v":0.3},{"t":20,"v":0}]}]}'></audio>
+  <audio id="click-find" src="assets/click.ogg" data-start="4.25" data-duration="0.25" data-track-index="11" data-volume="0.45"></audio>
+  <audio id="click-share" src="assets/click.ogg" data-start="14.7" data-duration="0.25" data-track-index="11" data-volume="0.45"></audio>
+</div>
+<script>
+const tl = gsap.timeline({paused:true});
+for(const [id,target] of Object.entries(TAP_TARGETS)){
+  gsap.set(id,{left:276+(target.x+target.width/2)*528/412-30,top:534+(target.y+target.height/2)*528/412-30});
+}
+tl.fromTo('#hook-copy',{opacity:0,y:36},{opacity:1,y:0,duration:.38,ease:'power3.out'},.06);
+tl.fromTo('#hook-phone',{opacity:0,y:85,scale:.96},{opacity:1,y:0,scale:1,duration:.55,ease:'power3.out'},.12);
+for (const [name,time] of [['find',3],['read',8.05],['share',12.55]]) {
+  tl.fromTo(`#${name}-copy`,{opacity:0,y:24},{opacity:1,y:0,duration:.32,ease:'power3.out'},time+.02);
+  tl.fromTo(`#${name}-phone`,{x:32,opacity:.4},{x:0,opacity:1,duration:.35,ease:'power3.out'},time);
+}
+// beat-locked: reader enters 8.05s (near strong cue 8.03s); sharing enters 12.55s (strong cue 12.5504s).
+tl.fromTo('#find-result',{autoAlpha:0},{autoAlpha:1,duration:.18},4.4);
+tl.fromTo('#share-draft',{autoAlpha:0},{autoAlpha:1,duration:.18},14.85);
+for (const [selector,time] of [['#find-tap',4.25],['#share-tap',14.7]]) {
+  tl.fromTo(selector,{opacity:0,scale:.45},{opacity:.85,scale:1,duration:.12,ease:'power2.out'},time);
+  tl.to(selector,{opacity:0,scale:1.4,duration:.26,ease:'power2.out'},time+.12);
+}
+tl.to('#brand',{opacity:0,duration:.16},17);
+tl.fromTo('#close-inner',{opacity:0,y:25},{opacity:1,y:0,duration:.3,ease:'power3.out'},17);
+// The story uses readable holds rather than sequential text arriving on every beat.
+// Deterministic, per-frame RMS sampling changes only the existing background warmth.
+for(let f=0;f<Math.min(600,AUDIO_DATA.frames.length);f++) {
+  const opacity=.15 + AUDIO_DATA.frames[f].rms*.16;
+  tl.set('#warmth',{opacity},f/30);
+}
+window.__timelines['wayfind']=tl;
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+name: Wayfind Brag video and social campaign
+on:
+  push:
+    branches: ['marketing/wayfind-launch-2026-10-18']
+    paths:
+      - '.github/workflows/wayfind-video.yml'
+      - 'marketing/wayfind-launch/composition/index.html'
+      - 'marketing/wayfind-launch/composition/index.motion.json'
+      - 'marketing/wayfind-launch/prepare-video.mjs'
+      - 'marketing/wayfind-launch/social-graphics.mjs'
+      - 'marketing/wayfind-launch/finish-video.mjs'
+      - 'marketing/wayfind-launch/qa-reviewed.json'
+      - 'marketing/wayfind-launch/capture.mjs'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: wayfind-campaign
+  cancel-in-progress: false
+jobs:
+  campaign:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: marketing/wayfind-launch
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install tools on free GitHub runner
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          python3 -m venv "$RUNNER_TEMP/wayfind-audio"
+          "$RUNNER_TEMP/wayfind-audio/bin/pip" install --quiet numpy==2.2.6
+          echo "AUDIO_PYTHON=$RUNNER_TEMP/wayfind-audio/bin/python" >> "$GITHUB_ENV"
+      - run: npx hyperframes usage --json > harness-usage.json || true
+      - name: Refresh actual deployed product captures
+        if: hashFiles('marketing/wayfind-launch/qa-reviewed.json') == ''
+        run: node capture.mjs
+      - run: npx goldie frame --config goldie.config.mjs
+      - run: node social-graphics.mjs
+      - run: node prepare-video.mjs
+      - name: Brag pre-render gate including contrast
+        working-directory: marketing/wayfind-launch/composition
+        run: npx hyperframes check --at 1.5,3.8,5.7,10.2,13.6,15.8,18.7 --snapshots --timeout 30000 --json > ../hyperframes-check.json
+      - name: Export settled scene frames for visual review
+        working-directory: marketing/wayfind-launch/composition
+        run: npx hyperframes snapshot --at 1.5,5.7,10.2,15.8,18.7 --output ../out/qa
+      - name: Confirm reviewed composition matches source
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';import crypto from 'node:crypto';
+          const p='qa-reviewed.json';let reviewed=false;
+          if(fs.existsSync(p)){const qa=JSON.parse(fs.readFileSync(p));reviewed=qa.compositionSha256===crypto.createHash('sha256').update(fs.readFileSync('composition/index.html')).digest('hex');}
+          fs.appendFileSync(process.env.GITHUB_ENV,`RENDER_REVIEWED=${reviewed}\n`);
+          JS
+      - name: Render final 20-second Brag video
+        if: env.RENDER_REVIEWED == 'true'
+        working-directory: marketing/wayfind-launch/composition
+        run: npx hyperframes render --fps 30 --quality high --workers 2 --output ../brag.mp4
+      - name: Bake poster and verify media
+        if: env.RENDER_REVIEWED == 'true'
+        run: node finish-video.mjs
+      - name: Save selected results without billed Actions artifacts
+        if: always()
+        run: |
+          git config user.name 'Wayfind Campaign Build'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          total=$(du -sb out/screenshots out/social composition/assets composition/vendor 2>/dev/null | awk '{n+=$1}END{print n}')
+          test "$total" -lt 41943040
+          for p in out/screenshots out/social out/qa composition/assets composition/vendor capture-evidence.json hyperframes-check.json harness-usage.json media-credits.md package-lock.json brag.mp4 brag.jpg verification.json; do
+            if test -e "$p"; then git add "$p"; fi
+          done
+          git diff --cached --quiet && exit 0
+          git commit -m 'Save verified Wayfind campaign outputs [skip ci]'
+          git push origin HEAD:${{ github.ref_name }}

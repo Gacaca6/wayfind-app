@@ -11,7 +11,7 @@ const page=await context.newPage();
 page.setDefaultTimeout(60000);
 const shots=[];
 const evidence=[];
-async function shot(id){await page.waitForTimeout(600);await page.evaluate(()=>document.fonts.ready);const file=path.join(raw,`${id}.png`);await page.screenshot({path:file});await page.screenshot({path:`composition/assets/${id}.png`});shots.push({sceneId:id,file});evidence.push({id,url:page.url(),heading:await page.locator('h1').first().textContent()});}
+async function shot(id){await page.waitForTimeout(600);await page.evaluate(()=>document.fonts.ready);const file=path.join(raw,`${id}.png`);await page.screenshot({path:file});await page.screenshot({path:`composition/assets/${id}.png`});shots.push({sceneId:id,file});const target=id==='feel-query'?await page.getByRole('button',{name:'Search',exact:true}).boundingBox():id==='share'?await page.getByRole('button',{name:/Share a verse Send/}).boundingBox():null;evidence.push({id,url:page.url(),heading:await page.locator('h1').first().textContent(),target});}
 await page.goto(base,{waitUntil:'networkidle'});
 await page.getByRole('button',{name:'Begin',exact:true}).click();
 await page.getByRole('button',{name:'Join the conversation'}).waitFor();
@@ -19,7 +19,9 @@ await shot('daily');
 await page.getByRole('button',{name:'Feel',exact:true}).click();
 await shot('feel-entry');
 await page.getByRole('textbox',{name:'Describe how you feel'}).fill('anxious');
+await shot('feel-query');
 await page.getByRole('button',{name:'Search',exact:true}).click();
+await page.waitForFunction(()=>document.querySelector('main')?.textContent.includes('NIV'));
 await shot('feel');
 await page.getByRole('button',{name:'Bible',exact:true}).click();
 await page.getByRole('button',{name:'NIV',exact:true}).click();

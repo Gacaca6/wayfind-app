@@ -1,0 +1,22 @@
+import {mkdir,readFile,writeFile,copyFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import path from 'node:path';
+const commit='069432cac935ed1895859df201c31436c07fb74e';
+const base=`https://raw.githubusercontent.com/latent-spaces/brag/${commit}/skills/brag/assets`;
+await mkdir('composition/vendor',{recursive:true});
+await mkdir('out/tmp',{recursive:true});
+async function get(url,dest){const r=await fetch(url);if(!r.ok)throw Error(`${r.status}: ${url}`);await writeFile(dest,Buffer.from(await r.arrayBuffer()));}
+await get(`${base}/music/happy-beats-business-moves-vol-12-by-ende-dot-app.mp3`,'out/tmp/original-music.mp3');
+await get(`${base}/music/cues/happy-beats-business-moves-vol-12-by-ende-dot-app.music-cues.json`,'composition/assets/music-cues.json');
+await get(`${base}/sfx/interface/click_003.ogg`,'composition/assets/click.ogg');
+await copyFile('node_modules/gsap/dist/gsap.min.js','composition/vendor/gsap.min.js');
+const evidence=JSON.parse(await readFile('capture-evidence.json','utf8'));
+const targets={'#find-tap':evidence.screens.find(s=>s.id==='feel-query').target,'#share-tap':evidence.screens.find(s=>s.id==='share').target};
+if(Object.values(targets).some(t=>!t))throw Error('Tap evidence missing');
+await writeFile('composition/assets/ui-targets.js',`const TAP_TARGETS=${JSON.stringify(targets)};`);
+execFileSync('ffmpeg',['-y','-loglevel','error','-i','out/tmp/original-music.mp3','-t','20','-b:a','192k','composition/assets/music.mp3']);
+execFileSync(process.env.AUDIO_PYTHON || 'python3',['extract-audio-data.py','composition/assets/music.mp3','--fps','30','-o','out/tmp/audio-data.json'],{stdio:'inherit'});
+const data=JSON.parse(await readFile('out/tmp/audio-data.json','utf8'));
+await writeFile('composition/assets/audio-data.js',`const AUDIO_DATA = ${JSON.stringify(data)};\n`);
+await writeFile('media-credits.md',`# Campaign media credits\n\nMusic: Happy Beats & Business Moves Vol. 12 by Sascha Ende — ende.app. CC BY 4.0. Source: https://ende.app/en/song/12881-happy-beats-business-moves-vol-12 ; license: https://ende.app/en/standard-license . Trimmed to 20 seconds and mixed with fades; no endorsement implied. Copy supplied by Brag at ${commit}.\n\nInterface click_003 by Kenney.nl, CC0, supplied by Brag.\n\nDM Sans and Lora: Google Fonts, SIL Open Font License. Wayfind logo and genuine UI supplied by the project owner. NIV copyright remains visible in the app Settings; Scripture displayed inside actual product captures.\n\nGoldie 0.5.0 (Software Mansion, MIT) frames the graphic assets. Brag (MIT) supplies the creative workflow. Hyperframes 0.8.171 renders the video; GSAP 3.14.2 animates it.\n`);
+console.log('Prepared local render assets and soundtrack attribution.');
