@@ -1,0 +1,39 @@
+name: Wayfind campaign graphics
+on:
+  push:
+    branches: ['marketing/wayfind-launch-2026-10-18']
+    paths: ['marketing/wayfind-launch/capture.mjs', 'marketing/wayfind-launch/goldie.config.mjs', 'marketing/wayfind-launch/package.json', '.github/workflows/wayfind-marketing.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  capture:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: marketing/wayfind-launch
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npx hyperframes usage --json > harness-usage.json || true
+      - run: npx hyperframes catalog --query 'headline reveal and product phone entrance' --json > catalog-results.json
+      - run: node capture.mjs
+      - run: npx goldie frame --config goldie.config.mjs
+      - name: Bound artifact size to remaining free storage
+        run: |
+          total=$(du -sb out composition/assets | awk '{n+=$1}END{print n}')
+          test "$total" -lt 41943040
+      - name: Save results on campaign branch without billed artifact storage
+        run: |
+          git config user.name 'Wayfind Campaign Build'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add out/screenshots composition/assets capture-evidence.json catalog-results.json harness-usage.json package-lock.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Save Wayfind campaign captures and Goldie graphics [skip ci]'
+          git push origin HEAD:${{ github.ref_name }}
