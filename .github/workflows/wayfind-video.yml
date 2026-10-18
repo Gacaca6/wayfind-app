@@ -36,6 +36,9 @@ jobs:
           sudo apt-get install -y -qq ffmpeg
           npm install --no-audit --no-fund
           npx playwright install --with-deps chromium
+          shell_path=$(find "$HOME/.cache/ms-playwright" -type f -name chrome-headless-shell | head -n 1)
+          test -n "$shell_path"
+          echo "HYPERFRAMES_BROWSER_PATH=$shell_path" >> "$GITHUB_ENV"
           python3 -m venv "$RUNNER_TEMP/wayfind-audio"
           "$RUNNER_TEMP/wayfind-audio/bin/pip" install --quiet numpy==2.2.6
           echo "AUDIO_PYTHON=$RUNNER_TEMP/wayfind-audio/bin/python" >> "$GITHUB_ENV"
@@ -51,6 +54,13 @@ jobs:
       - name: Export settled scene frames for visual review
         working-directory: marketing/wayfind-launch/composition
         run: npx hyperframes snapshot --at 1.5,5.7,10.2,15.8,18.7 --no-end --output ../out/qa
+      - name: Preserve check evidence
+        if: always()
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';import path from 'node:path';
+          if(fs.existsSync('hyperframes-check.json')){const r=JSON.parse(fs.readFileSync('hyperframes-check.json'));for(const f of r.snapshots?.files||[]){const from=path.join('composition',f);if(fs.existsSync(from)){fs.mkdirSync('out/qa/check',{recursive:true});fs.copyFileSync(from,path.join('out/qa/check',path.basename(f)));}}}
+          JS
       - run: node social-graphics.mjs
       - name: Confirm reviewed composition matches source
         run: |
