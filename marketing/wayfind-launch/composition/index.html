@@ -61,7 +61,7 @@ for (const [name,time] of [['find',3],['read',8.05],['share',12.55]]) {
   tl.fromTo(`#${name}-copy`,{opacity:0,y:24},{opacity:1,y:0,duration:.32,ease:'power3.out'},time+.02);
   tl.fromTo(`#${name}-phone`,{x:32,opacity:.4},{x:0,opacity:1,duration:.35,ease:'power3.out'},time);
 }
-// beat-locked: reader enters 8.05s (near strong cue 8.03s); sharing enters 12.55s (strong cue 12.5504s).
+// beat-locked: sharing enters 12.55s (strong cue 12.5504s). Reader uses natural timing for readability.
 tl.fromTo('#find-result',{autoAlpha:0},{autoAlpha:1,duration:.18},4.4);
 tl.fromTo('#share-draft',{autoAlpha:0},{autoAlpha:1,duration:.18},14.85);
 for (const [selector,time] of [['#find-tap',4.25],['#share-tap',14.7]]) {

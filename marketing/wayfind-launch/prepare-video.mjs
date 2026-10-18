@@ -9,6 +9,8 @@ async function get(url,dest){const r=await fetch(url);if(!r.ok)throw Error(`${r.
 await get(`${base}/music/happy-beats-business-moves-vol-12-by-ende-dot-app.mp3`,'out/tmp/original-music.mp3');
 await get(`${base}/music/cues/happy-beats-business-moves-vol-12-by-ende-dot-app.music-cues.json`,'composition/assets/music-cues.json');
 await get(`${base}/sfx/interface/click_003.ogg`,'composition/assets/click.ogg');
+await get('https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/OFL.txt','composition/assets/dm-sans-OFL.txt');
+await get('https://raw.githubusercontent.com/google/fonts/main/ofl/lora/OFL.txt','composition/assets/lora-OFL.txt');
 await copyFile('node_modules/gsap/dist/gsap.min.js','composition/vendor/gsap.min.js');
 const evidence=JSON.parse(await readFile('capture-evidence.json','utf8'));
 const targets={'#find-tap':evidence.screens.find(s=>s.id==='feel-query').target,'#share-tap':evidence.screens.find(s=>s.id==='share').target};

@@ -51,7 +51,7 @@ jobs:
         run: npx hyperframes check --at 1.5,3.8,5.7,10.2,13.6,15.8,18.7 --snapshots --timeout 30000 --json > ../hyperframes-check.json
       - name: Export settled scene frames for visual review
         working-directory: marketing/wayfind-launch/composition
-        run: npx hyperframes snapshot --at 1.5,5.7,10.2,15.8,18.7 --output ../out/qa
+        run: npx hyperframes snapshot --at 1.5,5.7,10.2,15.8,18.7 --no-end --output ../out/qa
       - name: Confirm reviewed composition matches source
         run: |
           node --input-type=module <<'JS'

@@ -21,7 +21,7 @@ await shot('feel-entry');
 await page.getByRole('textbox',{name:'Describe how you feel'}).fill('anxious');
 await shot('feel-query');
 await page.getByRole('button',{name:'Search',exact:true}).click();
-await page.waitForFunction(()=>document.querySelector('main')?.textContent.includes('NIV'));
+// Search cards currently show their curated KJV text; capture that honestly.
 await shot('feel');
 await page.getByRole('button',{name:'Bible',exact:true}).click();
 await page.getByRole('button',{name:'NIV',exact:true}).click();
