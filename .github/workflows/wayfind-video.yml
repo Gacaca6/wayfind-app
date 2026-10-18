@@ -44,7 +44,6 @@ jobs:
         if: hashFiles('marketing/wayfind-launch/composition/assets/ui-targets.js') == ''
         run: node capture.mjs
       - run: npx goldie frame --config goldie.config.mjs
-      - run: node social-graphics.mjs
       - run: node prepare-video.mjs
       - name: Brag pre-render gate including contrast
         working-directory: marketing/wayfind-launch/composition
@@ -52,6 +51,7 @@ jobs:
       - name: Export settled scene frames for visual review
         working-directory: marketing/wayfind-launch/composition
         run: npx hyperframes snapshot --at 1.5,5.7,10.2,15.8,18.7 --no-end --output ../out/qa
+      - run: node social-graphics.mjs
       - name: Confirm reviewed composition matches source
         run: |
           node --input-type=module <<'JS'

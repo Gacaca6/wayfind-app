@@ -23,7 +23,7 @@ async function branded(bytes,height,dest){
 }
 for(const [name,bytes] of originals)await branded(bytes,1920,`out/social/story/${name}`);
 const cfg=await loadConfig(path.resolve('goldie.config.mjs'));
-cfg.theme.template='classic';cfg.theme.copyHeightRatio=.33;cfg.theme.deviceWidthRatio=.65;
+cfg.theme.template=['classic'];cfg.theme.copyHeightRatio=.33;cfg.theme.deviceWidthRatio=.65;
 DEVICES['pixel-10-pro'].screenshot={width:1080,height:1260};
 await renderScreenshots(cfg,'pixel-10-pro','en-US');
 for(const name of files){await branded(await readFile(path.join(raw,name)),1350,`out/social/feed/${name}`);await writeFile(path.join(raw,name),originals.get(name));}
