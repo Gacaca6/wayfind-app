@@ -36,9 +36,8 @@ jobs:
           sudo apt-get install -y -qq ffmpeg
           npm install --no-audit --no-fund
           npx playwright install --with-deps chromium
-          shell_path=$(find "$HOME/.cache/ms-playwright" -type f -name chrome-headless-shell | head -n 1)
-          test -n "$shell_path"
-          echo "HYPERFRAMES_BROWSER_PATH=$shell_path" >> "$GITHUB_ENV"
+          shell_path=$(find "$HOME/.cache/ms-playwright" -type f \( -name chrome-headless-shell -o -name headless_shell \) | head -n 1)
+          if test -n "$shell_path"; then echo "HYPERFRAMES_BROWSER_PATH=$shell_path" >> "$GITHUB_ENV"; fi
           python3 -m venv "$RUNNER_TEMP/wayfind-audio"
           "$RUNNER_TEMP/wayfind-audio/bin/pip" install --quiet numpy==2.2.6
           echo "AUDIO_PYTHON=$RUNNER_TEMP/wayfind-audio/bin/python" >> "$GITHUB_ENV"
