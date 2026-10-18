@@ -1,0 +1,320 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 7,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 2 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/runner/work/wayfind-app/wayfind-app/marketing/wayfind-launch/composition/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 1 has 5 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/runner/work/wayfind-app/wayfind-app/marketing/wayfind-launch/composition/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"hook\"> is a timeline element that contains nested <div id=\"hook-copy\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#hook",
+        "dataAttributes": {},
+        "sourceFile": "/home/runner/work/wayfind-app/wayfind-app/marketing/wayfind-launch/composition/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"hook\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"find\"> is a timeline element that contains nested <div id=\"find-copy\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#find",
+        "dataAttributes": {},
+        "sourceFile": "/home/runner/work/wayfind-app/wayfind-app/marketing/wayfind-launch/composition/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"find\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"read\"> is a timeline element that contains nested <div id=\"read-copy\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#read",
+        "dataAttributes": {},
+        "sourceFile": "/home/runner/work/wayfind-app/wayfind-app/marketing/wayfind-launch/composition/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"read\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"share\"> is a timeline element that contains nested <div id=\"share-copy\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#share",
+        "dataAttributes": {},
+        "sourceFile": "/home/runner/work/wayfind-app/wayfind-app/marketing/wayfind-launch/composition/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"share\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"close\"> is a timeline element that contains nested <div id=\"close-inner\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#close",
+        "dataAttributes": {},
+        "sourceFile": "/home/runner/work/wayfind-app/wayfind-app/marketing/wayfind-launch/composition/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"close\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "clip_media_fit",
+        "severity": "warning",
+        "message": "Audio \"click-find\" is 0.01s but its slot (data-duration) is 0.25s — the slot is shortened to the media length when rendered. Set data-duration to ~0.01s if that isn't intended.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "wayfind",
+          "data-width": "1080",
+          "data-height": "1920",
+          "data-duration": "20",
+          "data-start": "0"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0
+      },
+      {
+        "code": "clip_media_fit",
+        "severity": "warning",
+        "message": "Audio \"click-share\" is 0.01s but its slot (data-duration) is 0.25s — the slot is shortened to the media length when rendered. Set data-duration to ~0.01s if that isn't intended.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "wayfind",
+          "data-width": "1080",
+          "data-height": "1920",
+          "data-duration": "20",
+          "data-start": "0"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0
+      }
+    ]
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 20,
+    "samples": [
+      1.5,
+      3.8,
+      5.7,
+      10.2,
+      13.6,
+      15.8,
+      18.7
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": false,
+    "errorCount": 2,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "motion_selector_ambiguous",
+        "severity": "error",
+        "time": 0,
+        "selector": ".copy",
+        "message": ".copy matches multiple elements — use a more specific selector so the assertion targets exactly one. 1 assertion(s) naming it were not evaluated.",
+        "rect": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "fixHint": "Use #id or :nth-child() instead of a class selector when multiple elements share the same class.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "firstSeen": 0,
+        "lastSeen": 0,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          0
+        ]
+      },
+      {
+        "code": "motion_selector_ambiguous",
+        "severity": "error",
+        "time": 0,
+        "selector": ".phone-slot",
+        "message": ".phone-slot matches multiple elements — use a more specific selector so the assertion targets exactly one. 1 assertion(s) naming it were not evaluated.",
+        "rect": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "fixHint": "Use #id or :nth-child() instead of a class selector when multiple elements share the same class.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "firstSeen": 0,
+        "lastSeen": 0,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          0
+        ]
+      }
+    ],
+    "enabled": true,
+    "specPath": "/home/runner/work/wayfind-app/wayfind-app/marketing/wayfind-launch/composition/index.motion.json",
+    "samples": 300
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      1.5,
+      3.8,
+      10.2,
+      13.6,
+      18.7
+    ],
+    "checked": 19,
+    "passed": 19
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": true,
+    "files": [
+      ".hyperframes/artifacts/snapshots/aa0bc913-e495-4c1b-ae2a-b584890a20c5/frame-00-at-1.5s.png",
+      ".hyperframes/artifacts/snapshots/aa0bc913-e495-4c1b-ae2a-b584890a20c5/frame-01-at-3.8s.png",
+      ".hyperframes/artifacts/snapshots/aa0bc913-e495-4c1b-ae2a-b584890a20c5/frame-02-at-10.2s.png",
+      ".hyperframes/artifacts/snapshots/aa0bc913-e495-4c1b-ae2a-b584890a20c5/frame-03-at-13.6s.png",
+      ".hyperframes/artifacts/snapshots/aa0bc913-e495-4c1b-ae2a-b584890a20c5/frame-04-at-18.7s.png"
+    ],
+    "times": [
+      1.5,
+      3.8,
+      10.2,
+      13.6,
+      18.7
+    ],
+    "findingFiles": []
+  },
+  "saved": {
+    "id": "6314575b-aec3-4b4b-83fd-ac1b8439e86a",
+    "revision": null,
+    "report": "/home/runner/work/wayfind-app/wayfind-app/marketing/wayfind-launch/composition/.hyperframes/artifacts/checks/6314575b-aec3-4b4b-83fd-ac1b8439e86a.json",
+    "attribution": "unversioned"
+  },
+  "_meta": {
+    "version": "0.8.171",
+    "updateAvailable": false
+  }
+}

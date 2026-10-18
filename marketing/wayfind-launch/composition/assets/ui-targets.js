@@ -1,0 +1,1 @@
+const TAP_TARGETS={"#find-tap":{"x":344,"y":165.5,"width":36,"height":36},"#share-tap":{"x":35,"y":537.5,"width":248,"height":65}};
