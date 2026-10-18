@@ -43,7 +43,6 @@ jobs:
           echo "AUDIO_PYTHON=$RUNNER_TEMP/wayfind-audio/bin/python" >> "$GITHUB_ENV"
       - run: npx hyperframes usage --json > harness-usage.json || true
       - name: Refresh actual deployed product captures
-        if: hashFiles('marketing/wayfind-launch/composition/assets/ui-targets.js') == ''
         run: node capture.mjs
       - run: npx goldie frame --config goldie.config.mjs
       - run: node prepare-video.mjs
